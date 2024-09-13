@@ -25,7 +25,7 @@
 1. **Clone dự án:**
 
    ```bash
-   git clone https://github.com/username/my-react-app.git
+   git clone https://github.com/ChickenSoup269/React-Food-KFC.git
    cd React-Food-KFC
    ```
 
@@ -65,15 +65,43 @@
 
 ## Cấu trúc Dự án
 
-- **`src/`**: Thư mục chứa mã nguồn chính của ứng dụng.
-  - **`index.js`**: Entry point của ứng dụng.
-  - **`App.js`**: Component chính của ứng dụng.
-  - **`styles/`**: Thư mục chứa các file SCSS.
-- **`webpack.config.js`**: Cấu hình Webpack.
-- **`.babelrc`**: Cấu hình Babel.
-- **`.prettierrc`**: Cấu hình Prettier.
-- **`.gitignore`**: Các file và thư mục bị bỏ qua bởi Git.
-- **`package.json`**: Thông tin dự án và các lệnh npm.
+### - Back-end
+
+- **`src`**
+  - **`controllers/`**
+  - **`models/`**
+  - **`routes/`**
+  - **`middleware/`**
+  - **`utils/`**
+  - **`config/`**
+  - **`index.js`**
+- **`.env`**
+- **`.gitignore`**
+- **`package.json`**
+
+### - Front-end
+
+- **`src/`**
+  - **`assets/`**
+    - **`fonts/`**
+    - **`hooks/`**
+    - **`images/`**
+    - **`styles/`**
+  - **`components/`**
+  - **`configs/`**
+  - **`pages/`**
+  - **`services/`**
+  - **`index.js`**
+  - **`App.js`**
+- **`webpack.config.js`**
+- **`.babelrc`**
+- **`.prettierrc`**
+- **`.gitignore`**
+- **`package.json`**
+
+## Screenshots
+
+<img src="" alt="loading ..."/>
 
 ## Đóng góp
 
@@ -93,6 +121,8 @@ Nếu bạn có bất kỳ câu hỏi nào hoặc muốn thảo luận thêm v�
 - **GitHub**: [github.com/username](https://github.com/username)
 
 ## Giấy phép
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 Dự án này được cấp phép theo [MIT License](LICENSE).
 
