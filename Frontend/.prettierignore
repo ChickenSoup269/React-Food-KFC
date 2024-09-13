@@ -1,0 +1,16 @@
+# Bỏ qua thư mục node_modules
+node_modules
+
+# Bỏ qua thư mục build (hoặc dist)
+build
+dist
+
+# Bỏ qua các file cấu hình và tệp không cần thiết
+*.json
+*.lock
+*.md
+*.yml
+
+# Bỏ qua file hoặc thư mục cụ thể
+src/ignored-directory/
+src/ignored-file.js

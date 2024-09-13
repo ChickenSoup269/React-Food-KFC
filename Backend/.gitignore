@@ -1,0 +1,39 @@
+# Node.js modules
+node_modules/
+
+# Environment files
+.env
+
+# Logs
+*.log
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+
+# Coverage reports
+coverage/
+
+#  macOS
+*.swp
+
+#  Windows
+*.pid
+
+#  IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs_analysis.dat
+*.ncb
+*.sdf
+*.opensdf
+*.suo
+*.suo
+
+jest.config.js
+*.test.js

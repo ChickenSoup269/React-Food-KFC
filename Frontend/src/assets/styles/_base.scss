@@ -1,0 +1,13 @@
+// chứa các thiết lập cơ bản, như reset CSS, thiết lập font chữ, body, v.v.
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  background-color: $primary-color;
+  color: white;
+}

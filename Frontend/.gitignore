@@ -1,0 +1,41 @@
+# Bỏ qua thư mục node_modules (các phụ thuộc của dự án)
+node_modules/
+
+# Bỏ qua thư mục build hoặc dist (kết quả biên dịch)
+build/
+dist/
+
+# Bỏ qua các file cấu hình của hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Bỏ qua các tệp log
+*.log
+
+# Bỏ qua tệp cấu hình cá nhân của IDE hoặc editor
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Bỏ qua tệp tạm thời và cache
+*.tmp
+*.swp
+*.bak
+
+# Bỏ qua các tệp môi trường
+.env
+.env.local
+.env.*.local
+
+# Bỏ qua tệp lock (nếu cần)
+package-lock.json
+yarn.lock
+
+# Bỏ qua các file và thư mục được tạo bởi các công cụ khác
+coverage/
+*.seed
+*.pid
+
+# Bỏ qua các tệp cấu hình khác (nếu có)
+*.config.js
+*.config.json
