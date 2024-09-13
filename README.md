@@ -1,6 +1,12 @@
-# React Food KFC
+<div align="center"><h1>REACT-FOOD-KFC</h1></div>
 
-![Project Logo](link-to-your-logo-image) <!-- Optional: Add a project logo -->
+<div align="center"><img src="./Frontend/src/assets/images/React%20KFC.png" width="200px" />
+
+[![My Skills](https://skillicons.dev/icons?i=react,javascript,nodejs,scss,mongodb,babel,express)](https://skillicons.dev)
+
+![Maintainer](https://img.shields.io/badge/React-Update-blue) ![Maintainer](https://img.shields.io/badge/nodejs-Update-green) ![Maintainer](https://img.shields.io/badge/sass-Update-pink) ![Maintainer](https://img.shields.io/badge/mongoDB-Update-none)
+
+</div>
 
 ## Giới thiệu
 
