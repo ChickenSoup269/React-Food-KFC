@@ -2,7 +2,7 @@
 
 <div align="center"><img src="./Frontend/src/assets/images/React%20KFC.png" width="200px" />
 
-[![My Skills](https://skillicons.dev/icons?i=react,javascript,nodejs,scss,mongodb,babel,express)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,javascript,nodejs,scss,tailwindcss,mongodb,babel,express)](https://skillicons.dev)
 
 ![Maintainer](https://img.shields.io/badge/React-Update-blue) ![Maintainer](https://img.shields.io/badge/nodejs-Update-green) ![Maintainer](https://img.shields.io/badge/sass-Update-pink) ![Maintainer](https://img.shields.io/badge/mongoDB-Update-none)
 
