@@ -99,11 +99,12 @@
   - **`services/`**
   - **`index.js`**
   - **`App.js`**
-- **`webpack.config.js`**
 - **`.babelrc`**
 - **`.prettierrc`**
 - **`.gitignore`**
 - **`package.json`**
+- **`tailwind.config.js`**
+- **`webpack.config.js`**
 
 ## Screenshots
 
