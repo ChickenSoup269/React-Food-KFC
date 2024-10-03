@@ -1,11 +1,14 @@
 // các đoạn code dùng chung
 // _root.scss
-@import 'variables';
 @import 'mixins';
 
 :root {
-  --primary-color: #3498db;
   --secondary-color: #2ecc71;
-  --font-family: 'Arial', sans-serif;
+  --font-family: 'Roboto', sans-serif;
   --font-size-base: 16px;
+
+  --primary-color: #ffc72c;
+  --secondary-color: #da291c;
+  --thirdary-color: #27251f;
+  // =========[Theme-light]===========
 }

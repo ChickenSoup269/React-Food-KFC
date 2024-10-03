@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-const App = () => {
+import publicRoutes from '~/routes';
+import DefaultLayout from '~/components/layouts';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+export default function App() {
   return (
-    <div>
-      <h1>Hello, React with Babel and Sass!</h1>
-    </div>
-  );
-};
+    <Router>
+      <div className="App">
+        <Routes>
+          {publicRoutes.map((route, index) => {
+            const Layout = route.layout === null ? Fragment : DefaultLayout;
+            const Page = route.component;
 
-export default App;
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </div>
+    </Router>
+  );
+}
