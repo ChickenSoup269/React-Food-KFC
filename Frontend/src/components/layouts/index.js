@@ -7,8 +7,8 @@ function DefaultLayout({ children }) {
   return (
     <div>
       <Header />
-      <div className="container">
-        <div className="content">{children}</div>
+      <div className="container flex flex-col min-h-screen">
+        <div className="content flex-grow">{children}</div>
       </div>
       <Footer />
     </div>
