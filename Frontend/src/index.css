@@ -50,6 +50,8 @@ body {
   --activeTextLightDark: black;
 
   --hoverTextLight: var(--steamTextShadowBlack);
+
+  --activeBg: rgba(0, 0, 0, 0.534);
 }
 [data-theme='dark'] {
   --activeNavLink: #ffffff;
@@ -70,6 +72,8 @@ body {
   --activeTextLightDark: #ffffff;
 
   --hoverTextLight: var(--steamTextShadow);
+
+  --activeBg: rgba(255, 255, 255, 0.534);
 }
 
 /* custom scroll bar */
