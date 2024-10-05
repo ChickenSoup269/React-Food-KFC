@@ -19,6 +19,7 @@
   --thirdary-color: #27251f;
   --background-white: white;
   --background-black: black;
+  --boxShadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 body {
@@ -26,6 +27,49 @@ body {
   font-size: var(--font-size-base);
   background-color: var(--background-black);
   color: rgb(0, 0, 0);
+}
+
+[data-theme='light'] {
+  --activeSwitch: #ffffff;
+  --activeLight: var(--primary);
+  --activeLight: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.493),
+    rgb(0, 153, 255)
+  );
+  --activeScrollBar: var(--steamColorWhite);
+  --activeFilter: none;
+  --activeBackgroundCartPay: linear-gradient(
+    to right,
+    rgb(47, 44, 44),
+    rgba(14, 127, 240, 0.712)
+  );
+  --activeButtonPayCart: var(--steamBackground);
+  --activeLightShadow: var(--steamBoxShadow);
+  --activeCardFree: var(--bgContent);
+  --activeTextLightDark: black;
+
+  --hoverTextLight: var(--steamTextShadowBlack);
+}
+[data-theme='dark'] {
+  --activeNavLink: #ffffff;
+  --activePrimary: var(--primary);
+  --activeSwitch: #131518;
+  --activeLight: linear-gradient(
+    to left,
+    rgba(71, 71, 71, 0.493),
+    rgba(0, 0, 0, 0.709)
+  );
+  --activeScrollBar: #434953;
+  --activeFilter: blur(30px) saturate(5);
+  --activeBackgroundCartPay: var(--steamBackgroundCartPay);
+  --activeButtonPayCart: linear-gradient(to right, #1ba5ef 0%, #1f46bb 60%);
+  --activeLightShadow: var(--steamBoxShadowWhite);
+  --activeCardFree: #ffffff;
+
+  --activeTextLightDark: #ffffff;
+
+  --hoverTextLight: var(--steamTextShadow);
 }
 
 /* custom scroll bar */
