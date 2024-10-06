@@ -1,24 +1,30 @@
 import React from 'react';
 
+import logo from '~/assets/images/logo2.png';
+import { useLanguage } from '~/components/Translate/LanguageContext';
+import translations from '~/components/Translate/translations';
+
+import styles from './login.scss';
+import clsx from 'clsx';
+
+const cx = clsx.bind(styles);
+
 export default function Login() {
+  const { language } = useLanguage();
   return (
-    <div className="bg-gray-50 dark:bg-gray-900">
+    <div className={cx('wrapper-login')}>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <img
-            className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-            alt="logo"
-          />
-          Flowbite
+          <img className=" w-12 h-12 mr-2" src={logo} alt="logo" />
+          <p className="logo-name-login"> ZeroChicken</p>
         </a>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="login-form w-full rounded-sm shadow md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Sign in to your account
+              {translations[language].signUpTitle}
             </h1>
             <form className="space-y-4 md:space-y-6" action="#">
               <div>
@@ -26,7 +32,7 @@ export default function Login() {
                   for="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Your email
+                  {translations[language].yourEmail}
                 </label>
                 <input
                   type="email"
@@ -42,7 +48,7 @@ export default function Login() {
                   for="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Password
+                  {translations[language].inputPassword}
                 </label>
                 <input
                   type="password"

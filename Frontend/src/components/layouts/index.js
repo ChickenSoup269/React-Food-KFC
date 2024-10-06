@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './DefaultLayout/Header';
 import Footer from './DefaultLayout/Footer';
 
-function DefaultLayout({ children }) {
+export default function DefaultLayout({ children }) {
   return (
     <div>
       <Header />
@@ -14,5 +14,3 @@ function DefaultLayout({ children }) {
     </div>
   );
 }
-
-export default DefaultLayout;

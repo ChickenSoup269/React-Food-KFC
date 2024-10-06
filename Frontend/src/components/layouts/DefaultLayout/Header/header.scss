@@ -1,6 +1,7 @@
 .wrapper-header {
   background-color: var(--activeBg);
   box-shadow: var(--boxShadow);
+  backdrop-filter: blur(5px);
 }
 
 // button

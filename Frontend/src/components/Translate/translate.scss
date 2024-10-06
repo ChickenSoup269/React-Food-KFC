@@ -1,0 +1,27 @@
+// animation dropdown language
+.dropdown {
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  visibility: hidden;
+}
+
+.dropdown-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+// dropdown content chossen
+.dropdown-menu-language {
+  background-color: var(--activeText);
+}
+
+.language-chossen {
+  color: var(--activeTextDropDown);
+  font-weight: 500;
+}
+.language-chossen:hover {
+  cursor: pointer;
+  background-color: #f3f4f6;
+}

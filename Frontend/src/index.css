@@ -44,6 +44,7 @@ body {
   --activeBg: rgba(255, 255, 255, 0.842);
   --activeBackground: #ffffff;
   --activeText: black;
+  --activeTextDropDown: white;
 }
 [data-theme='dark'] {
   /* css switch */
@@ -57,6 +58,7 @@ body {
   --activeBg: rgba(0, 0, 0, 0.534);
   --activeBackground: #1a1b1f;
   --activeText: rgb(255, 255, 255);
+  --activeTextDropDown: black;
 }
 
 /* custom scroll bar */
