@@ -1,61 +1,57 @@
 .wrapper-header {
   background-color: var(--activeBg);
-}
-
-// Toggle switch day * night
-.switch[type='checkbox'] {
-  appearance: none;
-  width: 52px;
-  height: 25px;
   box-shadow: var(--boxShadow);
-  background: var(--activeLight);
-  border-radius: 50px;
-  margin-left: 5px;
-  position: relative;
-  outline: 0;
-  cursor: pointer;
-}
-
-.switch[type='checkbox']:before,
-.switch[type='checkbox']:after {
-  position: absolute;
-  content: '';
-  transition: all 0.25s;
-}
-
-.switch[type='checkbox']:before {
-  width: 22px;
-  height: 22px;
-  background: #e8bd20;
-  border: 5px solid var(--activeSwitch);
-  border-radius: 50%;
-  top: 50%;
-  left: 5px;
-  transform: translateY(-50%);
-  box-shadow: rgba(232, 189, 32, 0.35) 0px 5px 15px;
-}
-
-.switch[type='checkbox']:after {
-  width: 12px;
-  height: 12px;
-  background: var(--activeSwitch);
-  border-radius: 50%;
-  top: 50%;
-  left: 15px;
-  transform: scale(1) translateY(-50%);
-  transform-origin: 50% 50%;
-}
-
-.switch[type='checkbox']:checked:before {
-  left: calc(100% - 27px);
-}
-
-.switch[type='checkbox']:checked:after {
-  left: 75px;
-  transform: scale(0);
 }
 
 // button
 .btn-login {
   color: white;
+  background-color: var(--primary-color);
+  transition:
+    0.3s ease,
+    color 0.3s ease;
+}
+.btn-login:hover {
+  color: black;
+}
+
+// ul li
+.navbar-ul,
+.logo-name {
+  color: var(--activeText);
+  transition:
+    0.3s ease,
+    color 0.3s ease;
+}
+
+.nav-li {
+  position: relative;
+  padding: 8px;
+  display: inline-block;
+}
+
+.nav-li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition:
+    0.3s ease,
+    left 0.3s ease;
+}
+
+.nav-li:hover::after {
+  width: 100%;
+  left: 0;
+}
+.active,
+.actives {
+  border-bottom: 2px solid var(--primary-color); /* Border for active items */
+}
+
+.actives::after {
+  display: none;
 }

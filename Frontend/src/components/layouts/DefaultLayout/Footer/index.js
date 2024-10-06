@@ -1,26 +1,36 @@
 import React from 'react';
-import './footer.scss';
+import clsx from 'clsx';
+import styles from './footer.scss';
+import logoImage2 from '~/assets/images/logo2.png';
+import routes from '~/routes/routes';
+
+const cx = clsx.bind(styles);
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-gray-900 ">
+    <footer className={cx('wrapper-footer ')}>
+      <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <a href="" className="flex items-center">
+            <a href={routes.home} className="flex items-center">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src={logoImage2}
                 className="h-8 me-3"
-                alt="FlowBite Logo"
+                alt="ZeroChiken Logo"
               />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              <span
+                className={cx(
+                  'logo-name self-center text-2xl font-semibold whitespace-nowrap '
+                )}
+              >
                 ZeroChicken
               </span>
             </a>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="text-title-footer mb-6 text-sm font-semibold uppercase ">
                 Resources
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
@@ -40,7 +50,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="text-title-footer mb-6 text-sm font-semibold uppercase ">
                 Follow us
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
@@ -63,7 +73,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="text-title-footer mb-6 text-sm font-semibold uppercase ">
                 Legal
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">

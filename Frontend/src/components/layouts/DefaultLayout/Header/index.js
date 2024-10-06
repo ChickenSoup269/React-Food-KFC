@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import clsx from 'clsx';
 import styles from './header.scss';
 import routes from '~/routes/routes.js';
+import logoImage2 from '~/assets/images/logo2.png';
+import ThemeLightDark from '~/components/Theme';
 
 const cx = clsx.bind(styles);
 
 export default function Header() {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  // theme light/dark
-  const handleThemeChange = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-  };
-
   return (
     <header
       className={cx(
@@ -29,24 +18,24 @@ export default function Header() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
-            src="https://logos-world.net/wp-content/uploads/2023/07/McDonalds-Logo.png"
+            // src="https://logos-world.net/wp-content/uploads/2023/07/McDonalds-Logo.png"
+            src={logoImage2}
             className="h-10 rounded-sm"
             alt="ZeroChiken Logo"
           />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="logo-name self-center text-2xl font-semibold whitespace-nowrap ">
             ZeroChicken
           </span>
         </a>
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center">
-          <input
-            className="switch "
-            type="checkbox"
-            checked={theme === 'light'}
-            onChange={handleThemeChange}
-          />
+        <div className="flex md:order-2 space-x-4 rtl:space-x-reverse items-center">
+          <ThemeLightDark />
+
+          {/* button login */}
           <button
             type="button"
-            className="btn-login focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 text-center "
+            className={cx(
+              'btn-login focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center'
+            )}
           >
             <a href={routes.login}>Login</a>
           </button>
@@ -82,37 +71,28 @@ export default function Header() {
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-sticky"
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border   md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  ">
+          <ul
+            className={cx(
+              'navbar-ul flex flex-col p-4 md:p-0 mt-4 font-medium border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  '
+            )}
+          >
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-                aria-current="page"
-              >
+              <a href={routes.home} className="nav-li actives">
                 Home
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                About
+              <a href={routes.home} className="nav-li ">
+                Menu
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                Services
+              <a href={routes.home} className="nav-li  ">
+                Search
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
+              <a href={routes.home} className="nav-li  ">
                 Contact
               </a>
             </li>

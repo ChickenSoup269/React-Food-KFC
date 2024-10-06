@@ -1,0 +1,52 @@
+// Toggle switch day * night
+.switch[type='checkbox'] {
+  appearance: none;
+  width: 52px;
+  height: 25px;
+  box-shadow: var(--boxShadow);
+  background: var(--activeLight);
+  border-radius: 50px;
+  margin-left: 5px;
+  position: relative;
+  outline: 0;
+  cursor: pointer;
+}
+
+.switch[type='checkbox']:before,
+.switch[type='checkbox']:after {
+  position: absolute;
+  content: '';
+  transition: all 0.25s;
+}
+
+.switch[type='checkbox']:before {
+  width: 22px;
+  height: 22px;
+  background: #e8bd20;
+  border: 5px solid var(--activeSwitch);
+  border-radius: 50%;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  box-shadow: rgba(232, 189, 32, 0.35) 0px 5px 15px;
+}
+
+.switch[type='checkbox']:after {
+  width: 12px;
+  height: 12px;
+  background: var(--activeSwitch);
+  border-radius: 50%;
+  top: 50%;
+  left: 15px;
+  transform: scale(1) translateY(-50%);
+  transform-origin: 50% 50%;
+}
+
+.switch[type='checkbox']:checked:before {
+  left: calc(100% - 27px);
+}
+
+.switch[type='checkbox']:checked:after {
+  left: 75px;
+  transform: scale(0);
+}

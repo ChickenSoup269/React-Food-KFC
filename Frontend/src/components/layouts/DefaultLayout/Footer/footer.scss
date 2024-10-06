@@ -1,0 +1,13 @@
+.wrapper-footer {
+  background-color: var(--activeBg);
+  transition:
+    0.3s ease,
+    color 0.3s ease;
+}
+
+.text-title-footer {
+  color: var(--activeText);
+  transition:
+    0.3s ease,
+    color 0.3s ease;
+}
