@@ -14,11 +14,18 @@ export default function Footer() {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <a href={routes.home} className="flex items-center">
-              <img
-                src={logoImage2}
-                className="h-8 me-3"
-                alt="ZeroChiken Logo"
-              />
+              <div className={cx('wrapper-logo')}>
+                <img
+                  src={logoImage2}
+                  className={cx('logo-image h-10')}
+                  alt="ZeroChiken Logo"
+                />
+                <img
+                  src={logoImage2}
+                  className={cx('logo-image-glow h-10')}
+                  alt="ZeroChiken Logo"
+                />
+              </div>
               <span
                 className={cx(
                   'logo-name self-center text-2xl font-semibold whitespace-nowrap '
@@ -101,10 +108,7 @@ export default function Footer() {
             . All Rights Reserved.
           </span>
           <div className="flex mt-4 sm:justify-center sm:mt-0">
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-            >
+            <a href="#" className="icon-social text-gray-500 ">
               <svg
                 className="w-4 h-4"
                 aria-hidden="true"
@@ -120,10 +124,7 @@ export default function Footer() {
               </svg>
               <span className="sr-only">Facebook page</span>
             </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-            >
+            <a href="#" className="icon-social text-gray-500  ms-5">
               <svg
                 className="w-4 h-4"
                 aria-hidden="true"
@@ -135,10 +136,7 @@ export default function Footer() {
               </svg>
               <span className="sr-only">Discord community</span>
             </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-            >
+            <a href="#" className="icon-social text-gray-500  ms-5">
               <svg
                 className="w-4 h-4"
                 aria-hidden="true"
@@ -154,10 +152,7 @@ export default function Footer() {
               </svg>
               <span className="sr-only">GitHub account</span>
             </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-            ></a>
+            <a href="#" className="text-gray-500   ms-5"></a>
           </div>
         </div>
       </div>

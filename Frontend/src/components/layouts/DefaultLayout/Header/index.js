@@ -1,34 +1,171 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import clsx from 'clsx';
 import styles from './header.scss';
 import routes from '~/routes/routes.js';
 import logoImage2 from '~/assets/images/logo2.png';
 import ThemeLightDark from '~/components/Theme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faEarthAmericas,
+  faShoppingCart,
+} from '@fortawesome/free-solid-svg-icons';
 
 const cx = clsx.bind(styles);
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null); // Reference to the dropdown menu
+
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
+  // Close the dropdown when clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        closeMenu();
+      }
+    };
+
+    // Bind the event listener
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      // Cleanup the event listener on component unmount
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownRef]);
+
+  const [language, setLanguage] = useState('en');
+
+  // On component mount, check for saved language in localStorage
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    setLanguage(savedLanguage);
+  }, []);
+
+  // Handle language change
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+    localStorage.setItem('language', lang); // Save the language to localStorage
+  };
+
+  // Translations
+  const translations = {
+    en: {
+      home: 'Home',
+      menu: 'Menu',
+      search: 'Search',
+      contact: 'Contact',
+      login: 'login',
+    },
+    vi: {
+      home: 'Trang chủ',
+      menu: 'Menu',
+      search: 'Tìm kiếm',
+      contact: 'Liên hệ',
+      login: 'Đăng nhập',
+    },
+  };
+
   return (
     <header
       className={cx(
-        'wrapper-header fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600'
+        'wrapper-header fixed w-full z-20 top-0 start-0 border-b dark:border-gray-600'
       )}
     >
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
-            // src="https://logos-world.net/wp-content/uploads/2023/07/McDonalds-Logo.png"
-            src={logoImage2}
-            className="h-10 rounded-sm"
-            alt="ZeroChiken Logo"
-          />
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
+        <a
+          href={routes.home}
+          className="flex items-center space-x-3 rtl:space-x-reverse"
+        >
+          <div className={cx('wrapper-logo')}>
+            <img
+              src={logoImage2}
+              className={cx('logo-image h-10 rounded-sm')}
+              alt="ZeroChiken Logo"
+            />
+            <img
+              src={logoImage2}
+              className="logo-image-glow h-10 rounded-sm"
+              alt="ZeroChiken Logo"
+            />
+          </div>
           <span className="logo-name self-center text-2xl font-semibold whitespace-nowrap ">
             ZeroChicken
           </span>
         </a>
         <div className="flex md:order-2 space-x-4 rtl:space-x-reverse items-center">
           <ThemeLightDark />
+
+          <div className="relative inline-block text-left" ref={dropdownRef}>
+            <div>
+              <FontAwesomeIcon
+                icon={faEarthAmericas}
+                className="icon-button-language"
+                id="menu-button"
+                aria-expanded={isOpen}
+                aria-haspopup="true"
+                onClick={toggleMenu}
+              />
+            </div>
+
+            {/* Dropdown menu with animation */}
+            <div
+              className={`dropdown-menu-language absolute right-0 z-10 mt-1 w-28 origin-top-right rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none 
+          dropdown ${isOpen ? 'dropdown-open' : ''}`} // Add class based on isOpen
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="menu-button"
+              tabIndex="-1"
+            >
+              <div className="py-1" role="none">
+                <p
+                  className={`language-chossen block px-4 py-2 text-sm text-gray-700 cursor-pointer ${language === 'en' ? 'font-bold text-primary' : ''}`}
+                  role="menuitem"
+                  tabIndex="0"
+                  onClick={() => {
+                    handleLanguageChange('en');
+                    toggleMenu(); // đóng dropdown
+                  }}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      handleLanguageChange('en');
+                      // thay đổi ngôn ngữ
+                    }
+                  }}
+                >
+                  English
+                </p>
+                <p
+                  className={`language-chossen block px-4 py-2 text-sm text-gray-700 cursor-pointer ${language === 'vi' ? 'font-bold text-primary' : ''}`}
+                  role="menuitem"
+                  tabIndex="0"
+                  onClick={() => {
+                    handleLanguageChange('vi');
+                    toggleMenu();
+                  }}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      handleLanguageChange('vi');
+                    }
+                  }}
+                >
+                  Tiếng Việt
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <FontAwesomeIcon
+            icon={faShoppingCart}
+            className="icon-shopping-cart"
+          />
 
           {/* button login */}
           <button
@@ -37,7 +174,7 @@ export default function Header() {
               'btn-login focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center'
             )}
           >
-            <a href={routes.login}>Login</a>
+            <a href={routes.login}> {translations[language].login}</a>
           </button>
 
           {/* bar menu moblie */}
@@ -78,22 +215,22 @@ export default function Header() {
           >
             <li>
               <a href={routes.home} className="nav-li actives">
-                Home
+                {translations[language].home}
               </a>
             </li>
             <li>
               <a href={routes.home} className="nav-li ">
-                Menu
+                {translations[language].menu}
               </a>
             </li>
             <li>
-              <a href={routes.home} className="nav-li  ">
-                Search
+              <a href={routes.home} className="nav-li ">
+                {translations[language].search}
               </a>
             </li>
             <li>
-              <a href={routes.home} className="nav-li  ">
-                Contact
+              <a href={routes.home} className="nav-li ">
+                {translations[language].contact}
               </a>
             </li>
           </ul>

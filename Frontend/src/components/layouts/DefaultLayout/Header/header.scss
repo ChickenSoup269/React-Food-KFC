@@ -15,6 +15,26 @@
   color: black;
 }
 
+// css image-logo glow
+.wrapper-logo {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.logo-image-glow,
+.logo-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.logo-image-glow {
+  filter: blur(30px) saturate(4);
+}
+
 // ul li
 .navbar-ul,
 .logo-name {
@@ -54,4 +74,39 @@
 
 .actives::after {
   display: none;
+}
+
+// icon
+.icon-shopping-cart,
+.icon-button-language {
+  cursor: pointer;
+  color: var(--activeText);
+}
+
+// animation dropdown language
+.dropdown {
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  visibility: hidden;
+}
+
+.dropdown-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+// dropdown content chossen
+
+.dropdown-menu-language {
+  background-color: var(--activeText);
+}
+
+.language-chossen {
+  font-weight: 500;
+}
+.language-chossen:hover {
+  cursor: pointer;
+  background-color: #f3f4f6;
 }

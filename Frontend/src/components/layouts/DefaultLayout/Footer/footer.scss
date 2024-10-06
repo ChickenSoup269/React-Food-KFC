@@ -11,3 +11,16 @@
     0.3s ease,
     color 0.3s ease;
 }
+
+// icon
+.icon-social {
+  transition:
+    0.3s ease,
+    left 0.3s ease;
+}
+.icon-social:hover {
+  color: var(--activeText);
+  transition:
+    0.3s ease,
+    left 0.3s ease;
+}
