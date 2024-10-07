@@ -82,7 +82,7 @@
 //  product-card
 .product-card {
   width: 250px;
-  background-color: #ece9e3;
+  background-color: var(--activeProductCard);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all ease-in-out 0.3s;
@@ -106,6 +106,21 @@
   font-weight: 500;
   transition: all ease-in-out 0.3s;
   box-shadow: var(--boxShadow);
+  &:hover {
+    background-color: var(--primary-color);
+    color: black;
+  }
+}
+
+// css about kfc poster
+.about-kfc-bottom {
+  color: var(--activeText);
+}
+
+.about-kfc-bottom-btn {
+  background-color: var(--secondary-color);
+  transition: all ease-in-out 0.3s;
+
   &:hover {
     background-color: var(--primary-color);
     color: black;

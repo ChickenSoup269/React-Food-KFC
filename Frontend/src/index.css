@@ -49,6 +49,7 @@ body {
   --activeGlowImg: none;
   --activeTextShadow: none;
   --activeScrollBar: var(--thirdary-color);
+  --activeProductCard: #ece9e3;
 }
 [data-theme='dark'] {
   /* css switch */
@@ -67,6 +68,7 @@ body {
   --activeGlowImg: blur(30px) saturate(4);
   --activeTextShadow: 3px 3px 13px rgba(217, 0, 0, 0.59);
   --activeScrollBar: var(--primary-color);
+  --activeProductCard: #ffd685;
 }
 
 /* custom scroll bar */
