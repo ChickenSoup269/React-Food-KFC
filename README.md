@@ -1,8 +1,8 @@
-<div align="center"><h1>REACT-FOOD-KFC</h1></div>
+<div align="center"><h1>REACT-FOOD-KFC</h1><img src="./Frontend/src/assets/images/logo2.png" width="100px" /></div>
 
 <div align="center"><img src="./Frontend/src/assets/images/React%20KFC.png" width="200px" />
 
-[![My Skills](https://skillicons.dev/icons?i=react,javascript,nodejs,scss,tailwindcss,mongodb,babel,express)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,javascript,nodejs,scss,tailwindcss,mongodb,babel,express,webpack)](https://skillicons.dev)
 
 ![Maintainer](https://img.shields.io/badge/React-Update-blue) ![Maintainer](https://img.shields.io/badge/nodejs-Update-green) ![Maintainer](https://img.shields.io/badge/sass-Update-pink) ![Maintainer](https://img.shields.io/badge/mongoDB-Update-none)
 
@@ -68,43 +68,6 @@
   ```bash
   npm run format
   ```
-
-## Cấu trúc Dự án
-
-### - Back-end
-
-- **`src`**
-  - **`controllers/`**
-  - **`models/`**
-  - **`routes/`**
-  - **`middleware/`**
-  - **`utils/`**
-  - **`config/`**
-  - **`index.js`**
-- **`.env`**
-- **`.gitignore`**
-- **`package.json`**
-
-### - Front-end
-
-- **`src/`**
-  - **`assets/`**
-    - **`fonts/`**
-    - **`hooks/`**
-    - **`images/`**
-    - **`styles/`**
-  - **`components/`**
-  - **`configs/`**
-  - **`pages/`**
-  - **`services/`**
-  - **`index.js`**
-  - **`App.js`**
-- **`.babelrc`**
-- **`.prettierrc`**
-- **`.gitignore`**
-- **`package.json`**
-- **`tailwind.config.js`**
-- **`webpack.config.js`**
 
 ## Screenshots
 
