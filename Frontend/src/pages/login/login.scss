@@ -9,9 +9,9 @@
 
 // login form
 .login-form {
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.61); /* Semi-transparent black background */
   backdrop-filter: blur(10px); /* Blur effect for background */
-  -webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(2px);
   box-shadow: var(--boxShadow);
   border-radius: 8px;
   padding: 20px;
@@ -19,10 +19,30 @@
 
 // logo-name-login
 .logo-name-login {
-  color: rgb(255, 255, 255);
-
+  color: white;
   padding: 5px;
   border-radius: 5px;
   box-shadow: var(--boxShadow);
   font-weight: 700;
+}
+
+.forgot-password-text,
+.sign-in-text {
+  color: white;
+  transition: all ease-in-out 0.3s;
+}
+
+.forgot-password-text {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.sign-in-text {
+  background-color: black;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
 }

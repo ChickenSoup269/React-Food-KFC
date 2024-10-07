@@ -3,6 +3,7 @@ import React from 'react';
 import logo from '~/assets/images/logo2.png';
 import { useLanguage } from '~/components/Translate/LanguageContext';
 import translations from '~/components/Translate/translations';
+import routes from '~/routes/routes';
 
 import styles from './login.scss';
 import clsx from 'clsx';
@@ -38,8 +39,8 @@ export default function Login() {
                   type="email"
                   name="email"
                   id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name@company.com"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                  placeholder="emmail@gmail.com"
                   required=""
                 />
               </div>
@@ -55,7 +56,7 @@ export default function Login() {
                   name="password"
                   id="password"
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                   required=""
                 />
               </div>
@@ -80,21 +81,24 @@ export default function Login() {
                   </div>
                 </div>
                 <a
-                  href="#"
-                  className="forgot-password-text text-sm font-medium hover:underline "
+                  href={routes.recoveryPass}
+                  className="forgot-password-text text-sm font-medium"
                 >
-                  Forgot password?
+                  {translations[language].forgotPassword}
                 </a>
               </div>
               <button
                 type="submit"
-                className="w-full text-white bg-red-50 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="sign-in-text w-full focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
                 Sign in
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{' '}
-                <a href="#" className="font-medium hover:underline">
+                <a
+                  href={routes.register}
+                  className="font-medium hover:underline"
+                >
                   Sign up
                 </a>
               </p>

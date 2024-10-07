@@ -10,6 +10,7 @@ const translations = {
     yourEmail: 'Your email',
     inputPassword: 'Password',
     rememberMe: 'Remember me',
+    forgotPassword: 'Forgot password?',
   },
   vi: {
     home: 'Trang chủ',
@@ -21,6 +22,7 @@ const translations = {
     yourEmail: 'Nhập email',
     inputPassword: 'Nhập mật khẩu',
     rememberMe: 'Nhớ tài khoản',
+    forgotPassword: 'Quên mật khẩu?',
   },
 };
 

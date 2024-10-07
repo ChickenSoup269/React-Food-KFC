@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './home.scss';
 import { Navigation, /**Pagination**/ Thumbs } from 'swiper/modules'; // Add Thumbs module
@@ -13,6 +13,32 @@ const cx = clsx.bind(styles);
 
 export default function Home() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null); // State to hold thumbnail Swiper instance
+  const [activeCategory, setActiveCategory] = useState(null);
+  // Function to handle scroll event
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+
+    Array.from(new Set(products.map((product) => product.category))).forEach(
+      (category) => {
+        const categoryElement = categoryRefs.current[category];
+        const categoryTop = categoryElement.offsetTop;
+        const categoryHeight = categoryElement.offsetHeight;
+
+        // Check if the scroll position is within the category section
+        if (scrollY >= categoryTop && scrollY < categoryTop + categoryHeight) {
+          setActiveCategory(category);
+        }
+      }
+    );
+  };
+
+  // Add scroll event listener
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   // Sample images for the slider
   const images = [
@@ -97,7 +123,6 @@ export default function Home() {
       <div className="product-slider w-full max-w-7xl mx-auto mt-10">
         {/* Buttons to scroll to respective categories */}
         <div className="sticky custom-background flex top-16 z-10 py-2 justify-center w-full">
-          {/* Centering the button container */}
           <div className="button-container flex space-x-2 mb-1">
             {Array.from(
               new Set(products.map((product) => product.category))
@@ -105,7 +130,11 @@ export default function Home() {
               <button
                 key={category}
                 onClick={() => scrollToSection(category)}
-                className="btn-category text-white py-2 px-4 rounded-lg shadow-lg"
+                className={`btn-category text-white py-2 px-4 rounded-lg shadow-lg ${
+                  activeCategory === category
+                    ? 'bg-[var(--thirdary-color)]'
+                    : 'bg-[var(--secondary-color)]'
+                }`} // Use CSS variables for button colors
               >
                 {category}
               </button>
@@ -119,6 +148,7 @@ export default function Home() {
             <div
               key={category}
               ref={(el) => (categoryRefs.current[category] = el)}
+              className="mt-12"
             >
               <h1 className="product-title text-4xl font-bold mb-5 uppercase">
                 {category}

@@ -45,8 +45,10 @@ body {
   --activeBackground: #ffffff;
   --activeText: black;
   --activeTextDropDown: white;
+  --activeHoverDropDown: rgb(143, 143, 143);
   --activeGlowImg: none;
   --activeTextShadow: none;
+  --activeScrollBar: var(--thirdary-color);
 }
 [data-theme='dark'] {
   /* css switch */
@@ -61,15 +63,17 @@ body {
   --activeBackground: #1a1b1f;
   --activeText: rgb(255, 255, 255);
   --activeTextDropDown: black;
+  --activeHoverDropDown: #f3f4f6;
   --activeGlowImg: blur(30px) saturate(4);
-  --activeTextShadow: 0px 3px 6px rgba(255, 0, 0, 0.41);
+  --activeTextShadow: 3px 3px 13px rgba(217, 0, 0, 0.59);
+  --activeScrollBar: var(--primary-color);
 }
 
 /* custom scroll bar */
 ::-webkit-scrollbar {
   height: 12px;
   width: 14px;
-  background: var(--background-black);
+  background: var(--activeBg);
   z-index: 12;
   overflow: visible;
 }
@@ -80,7 +84,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   width: 10px;
-  background-color: var(--primary-color);
+  background-color: var(--activeScrollBar);
   border-radius: 10px;
   z-index: 12;
   border: 4px solid rgba(0, 0, 0, 0);

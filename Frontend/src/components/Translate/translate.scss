@@ -20,8 +20,9 @@
 .language-chossen {
   color: var(--activeTextDropDown);
   font-weight: 500;
-}
-.language-chossen:hover {
-  cursor: pointer;
-  background-color: #f3f4f6;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--activeHoverDropDown);
+  }
 }

@@ -5,6 +5,7 @@ const routes = {
   settings: '/settings',
   login: '/login',
   register: '/register',
+  recoveryPass: '/recoveryPass',
 };
 
 export default routes;
