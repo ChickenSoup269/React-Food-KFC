@@ -5,10 +5,11 @@ const translations = {
     menu: 'Menu',
     search: 'Search',
     contact: 'Contact',
-    login: 'login',
+    login: 'Login',
     signUpTitle: 'Sign in to your account',
     yourEmail: 'Your email',
     inputPassword: 'Password',
+    rememberMe: 'Remember me',
   },
   vi: {
     home: 'Trang chủ',
@@ -19,6 +20,7 @@ const translations = {
     signUpTitle: 'Đăng nhập tài khoản',
     yourEmail: 'Nhập email',
     inputPassword: 'Nhập mật khẩu',
+    rememberMe: 'Nhớ tài khoản',
   },
 };
 

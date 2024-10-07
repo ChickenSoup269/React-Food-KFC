@@ -2,6 +2,7 @@
   background-color: var(--activeBg);
   box-shadow: var(--boxShadow);
   backdrop-filter: blur(5px);
+  border-radius: 0px 0px 5px 5px;
 }
 
 // button
@@ -11,9 +12,10 @@
   transition:
     0.3s ease,
     color 0.3s ease;
-}
-.btn-login:hover {
-  color: black;
+
+  &:hover {
+    color: black;
+  }
 }
 
 // css image-logo glow
@@ -33,7 +35,7 @@
 }
 
 .logo-image-glow {
-  filter: blur(30px) saturate(4);
+  filter: var(--activeGlowImg);
 }
 
 // ul li

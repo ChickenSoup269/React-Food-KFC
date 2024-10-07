@@ -39,7 +39,6 @@ coverage/
 *.pid
 
 # Bỏ qua các tệp cấu hình khác (nếu có)
-
 *.config.json
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 

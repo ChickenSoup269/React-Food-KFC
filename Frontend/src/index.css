@@ -45,6 +45,8 @@ body {
   --activeBackground: #ffffff;
   --activeText: black;
   --activeTextDropDown: white;
+  --activeGlowImg: none;
+  --activeTextShadow: none;
 }
 [data-theme='dark'] {
   /* css switch */
@@ -59,6 +61,8 @@ body {
   --activeBackground: #1a1b1f;
   --activeText: rgb(255, 255, 255);
   --activeTextDropDown: black;
+  --activeGlowImg: blur(30px) saturate(4);
+  --activeTextShadow: 0px 3px 6px rgba(255, 0, 0, 0.41);
 }
 
 /* custom scroll bar */
@@ -91,4 +95,15 @@ body {
   background: #54a5d4;
   text-shadow: 1px 1px 2px #000000aa;
   color: #fff;
+}
+
+/* Remmove background paste chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #23232329;
 }

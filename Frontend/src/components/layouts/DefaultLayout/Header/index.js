@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './header.scss';
 import routes from '~/routes/routes.js';
@@ -7,7 +6,6 @@ import logoImage2 from '~/assets/images/logo2.png';
 import ThemeLightDark from '~/components/Theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-
 import Translate from '~/components/Translate';
 import translations from '~/components/Translate/translations';
 import { useLanguage } from '~/components/Translate/LanguageContext';
@@ -17,11 +15,40 @@ const cx = clsx.bind(styles);
 export default function Header() {
   const { language } = useLanguage();
 
+  // State to manage background color and fix position based on scroll
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Function to detect scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <header
       className={cx(
-        'wrapper-header fixed w-full z-20 top-0 start-0 border-b dark:border-gray-600'
+        'wrapper-header w-full z-20 transition-all duration-500 ease-in-out',
+        isScrolled
+          ? 'fixed top-0 start-0 text-white shadow-lg'
+          : 'relative text-white z-10'
       )}
+      style={{
+        backgroundColor: isScrolled
+          ? 'var(--activeBg)'
+          : 'var(--secondary-color)', // Inline style for background-color
+        transition: 'background-color 0.5s, padding 0.5s, box-shadow 0.5s',
+      }}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
         <a
@@ -32,15 +59,15 @@ export default function Header() {
             <img
               src={logoImage2}
               className={cx('logo-image h-10 rounded-sm')}
-              alt="ZeroChiken Logo"
+              alt="ZeroChicken Logo"
             />
             <img
               src={logoImage2}
               className="logo-image-glow h-10 rounded-sm"
-              alt="ZeroChiken Logo"
+              alt="ZeroChicken Logo"
             />
           </div>
-          <span className="logo-name self-center text-2xl font-semibold whitespace-nowrap ">
+          <span className="logo-name self-center text-2xl font-semibold whitespace-nowrap">
             ZeroChicken
           </span>
         </a>
@@ -58,10 +85,10 @@ export default function Header() {
           <button
             type="button"
             className={cx(
-              'btn-login focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center'
+              'btn-login focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center capitalize'
             )}
           >
-            <a href={routes.login}> {translations[language].login}</a>
+            <a href={routes.login}>{translations[language].login}</a>
           </button>
 
           {/* bar menu moblie */}
@@ -82,9 +109,9 @@ export default function Header() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
@@ -97,7 +124,7 @@ export default function Header() {
         >
           <ul
             className={cx(
-              'navbar-ul flex flex-col p-4 md:p-0 mt-4 font-medium border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  '
+              'navbar-ul flex flex-col p-4 md:p-0 mt-4 font-medium border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0'
             )}
           >
             <li>
@@ -106,17 +133,17 @@ export default function Header() {
               </a>
             </li>
             <li>
-              <a href={routes.home} className="nav-li ">
+              <a href={routes.home} className="nav-li">
                 {translations[language].menu}
               </a>
             </li>
             <li>
-              <a href={routes.home} className="nav-li ">
+              <a href={routes.home} className="nav-li">
                 {translations[language].search}
               </a>
             </li>
             <li>
-              <a href={routes.home} className="nav-li ">
+              <a href={routes.home} className="nav-li">
                 {translations[language].contact}
               </a>
             </li>

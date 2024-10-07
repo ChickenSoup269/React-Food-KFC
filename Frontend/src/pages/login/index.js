@@ -75,13 +75,13 @@ export default function Login() {
                       for="remember"
                       className="text-gray-500 dark:text-gray-300"
                     >
-                      Remember me
+                      {translations[language].rememberMe}
                     </label>
                   </div>
                 </div>
                 <a
                   href="#"
-                  className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  className="forgot-password-text text-sm font-medium hover:underline "
                 >
                   Forgot password?
                 </a>
@@ -94,10 +94,7 @@ export default function Login() {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{' '}
-                <a
-                  href="#"
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >
+                <a href="#" className="font-medium hover:underline">
                   Sign up
                 </a>
               </p>
