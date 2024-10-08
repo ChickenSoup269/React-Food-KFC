@@ -3,7 +3,7 @@ const translations = {
   en: {
     home: 'Home',
     menu: 'Menu',
-    search: 'Search',
+    search: 'Find A ZFC',
     contact: 'Contact',
     login: 'Login',
     signInTitle: 'Sign in to your account',
@@ -17,7 +17,7 @@ const translations = {
   vi: {
     home: 'Trang chủ',
     menu: 'Thực đơn',
-    search: 'Tìm kiếm',
+    search: 'Tìm Nhà Hàng',
     contact: 'Liên hệ',
     login: 'Đăng nhập',
     signInTitle: 'Đăng nhập tài khoản',

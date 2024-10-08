@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
 import styles from './header.scss';
 import routes from '~/routes/routes.js';
 import logoImage2 from '~/assets/images/logo2.png';
 import ThemeLightDark from '~/components/Theme';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { useLanguage } from '~/components/Translate/LanguageContext';
 import Translate from '~/components/Translate';
 import translations from '~/components/Translate/translations';
-import { useLanguage } from '~/components/Translate/LanguageContext';
 
 const cx = clsx.bind(styles);
 
@@ -34,6 +36,13 @@ export default function Header() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const navItems = [
+    { route: routes.home, translation: translations[language].home },
+    { route: routes.menuPage, translation: translations[language].menu },
+    { route: routes.search, translation: translations[language].search },
+    { route: routes.settings, translation: translations[language].contact },
+  ];
 
   return (
     <header
@@ -128,26 +137,18 @@ export default function Header() {
               'navbar-ul flex flex-col p-4 md:p-0 mt-4 font-medium border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0'
             )}
           >
-            <li>
-              <a href={routes.home} className="nav-li actives">
-                {translations[language].home}
-              </a>
-            </li>
-            <li>
-              <a href={routes.home} className="nav-li">
-                {translations[language].menu}
-              </a>
-            </li>
-            <li>
-              <a href={routes.home} className="nav-li">
-                {translations[language].search}
-              </a>
-            </li>
-            <li>
-              <a href={routes.home} className="nav-li">
-                {translations[language].contact}
-              </a>
-            </li>
+            {navItems.map((item) => (
+              <li key={item.route}>
+                <NavLink
+                  to={item.route}
+                  className={({ isActive }) =>
+                    isActive ? 'nav-li actives' : 'nav-li'
+                  }
+                >
+                  {item.translation}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

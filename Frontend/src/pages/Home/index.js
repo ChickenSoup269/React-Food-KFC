@@ -99,7 +99,7 @@ export default function Home() {
             <SwiperSlide key={index}>
               <div className="relative w-full h-32 flex justify-center items-center rounded-md cursor-pointer">
                 {/* The glow effect (cloned thumbnail) */}
-                <div className="absolute inset-0 w-full h-full rounded-md opacity-50 glow-image-thumb -z-10">
+                <div className="absolute inset-0 w-full h-full rounded-md opacity-50 ">
                   <img
                     src={image}
                     alt={`Glow Thumbnail ${index + 1}`}
@@ -225,18 +225,37 @@ export default function Home() {
         <div className="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
           <div className="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1">
             <div className="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last">
-              <div className="pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex">
+              {/* First Image with Glow Effect */}
+              <div className="relative flex pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5">
                 <img
-                  className=" rounded-xl object-cover"
+                  className="rounded-xl object-cover w-full h-auto" // Make sure the image is responsive
                   src="https://i.pinimg.com/originals/24/50/fc/2450fcf22635b5cf4678aeaffb7be9c8.jpg"
                   alt="about Us image"
                 />
+                {/* Glow Image for First Image */}
+                <img
+                  className="absolute w-full h-auto rounded-xl object-cover"
+                  src="https://i.pinimg.com/originals/24/50/fc/2450fcf22635b5cf4678aeaffb7be9c8.jpg" // Duplicate for glow effect
+                  alt="Glow Thumbnail"
+                  style={{ filter: 'var(--activeGlowImg)', opacity: 0.2 }} // Adjust the glow effect
+                />
               </div>
-              <img
-                className="sm:ml-0 ml-auto rounded-xl object-cover"
-                src="https://trendmedia.h5mag.com/trendmedia/kfc_delivery_april_2020/cover/75025/KFC_Delivery_480x670.960_0_1.png"
-                alt="about Us image"
-              />
+
+              {/* Second Image with Glow Effect */}
+              <div className="relative">
+                <img
+                  className="sm:ml-0 ml-auto rounded-xl object-cover"
+                  src="https://trendmedia.h5mag.com/trendmedia/kfc_delivery_april_2020/cover/75025/KFC_Delivery_480x670.960_0_1.png"
+                  alt="about Us image"
+                />
+                {/* Glow Image for Second Image */}
+                <img
+                  className="absolute inset-0 w-full h-full rounded-xl object-cover"
+                  src="https://trendmedia.h5mag.com/trendmedia/kfc_delivery_april_2020/cover/75025/KFC_Delivery_480x670.960_0_1.png" // Duplicate for glow effect
+                  alt="Glow Thumbnail"
+                  style={{ filter: 'var(--activeGlowImg)', opacity: 0.2 }} // Adjust the glow effect
+                />
+              </div>
             </div>
             <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
               <div className="w-full flex-col justify-center items-start gap-8 flex">

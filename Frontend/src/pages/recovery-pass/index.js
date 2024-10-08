@@ -8,22 +8,20 @@ const cx = clsx.bind(styles);
 export default function RecoveryPassword() {
   return (
     <div className={cx('wrapper-forgot-pass')}>
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div class="flex flex-1 flex-col  justify-center space-y-5 max-w-md mx-auto mt-24">
-          <div class="flex flex-col space-y-2 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold">Confirm OTP</h2>
-            <p class="text-md md:text-xl">Enter the OTP we just sent you.</p>
-          </div>
-          <div class="flex flex-col max-w-md space-y-5">
-            <input
-              type="text"
-              placeholder="otp"
-              class="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
-            />
-            <button class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white">
-              Confirm
-            </button>
-          </div>
+      <div className="flex flex-col items-center justify-center min-h-screen px-4">
+        <div className="flex flex-col space-y-2 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold">Confirm OTP</h2>
+          <p className="text-md md:text-xl">Enter the OTP we just sent you.</p>
+        </div>
+        <div className="flex flex-col max-w-md w-full space-y-5">
+          <input
+            type="text"
+            placeholder="Enter OTP"
+            className="flex w-full px-4 py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal focus:outline-none focus:border-blue-500 transition duration-200"
+          />
+          <button className="flex items-center justify-center px-4 py-3 border-2 rounded-lg font-medium border-black bg-black text-white hover:bg-gray-800 transition duration-200">
+            Confirm
+          </button>
         </div>
       </div>
     </div>

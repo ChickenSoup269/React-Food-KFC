@@ -2,7 +2,8 @@ import Home from '~/pages/home';
 import Login from '~/pages/login';
 import Register from '~/pages/register';
 import RecoveryPassword from '~/pages/recovery-pass';
-import SearchPage from '../pages/search';
+import SearchPage from '~/pages/search';
+import MenuPage from '~/pages/menu';
 
 const publicRoutes = [
   {
@@ -24,6 +25,10 @@ const publicRoutes = [
   {
     path: '/search',
     component: SearchPage,
+  },
+  {
+    path: '/menu',
+    component: MenuPage,
   },
 ];
 
