@@ -166,12 +166,17 @@ export default function Home() {
                   .map((product, index) => (
                     <SwiperSlide key={index}>
                       <div className="product-card mx-auto mt-11 w-46 transform overflow-hidden rounded-lg shadow-md duration-300 hover:scale-105 hover:shadow-lg">
-                        <div className="flex justify-center">
+                        <div className="relative flex justify-center">
+                          {/* Product image */}
                           <img
                             className="product-card-img h-40 w-36 object-cover object-center"
                             src={product.image}
                             alt={product.name}
                           />
+                          {/* Discount Badge */}
+                          <p className="discount-badge absolute top-2 right-2 text-base font-medium">
+                            20% off
+                          </p>
                         </div>
 
                         <div className="p-4">
@@ -182,18 +187,28 @@ export default function Home() {
                             {product.description}
                           </p>
                           <div className="flex items-center">
-                            <p className="product-card-price mr-2 text-lg font-semibold line-through dark:text-gray-300">
+                            <p className="product-card-price mr-2 text-lg font-semibold line-through dark:text-gray-500">
                               ${product.price}
                             </p>
-                            <p className="product-card-price-sales text-white text-base font-medium ">
+                            <p className="product-card-price-sales font-medium ">
                               $25.00
                             </p>
-                            <p className="ml-auto text-base font-medium text-green-500">
-                              20% off
-                            </p>
+                            {/* Size Options */}
+                            <div className="btn-size-food ml-auto flex space-x-2">
+                              <span className="text-base ">Sizes:</span>
+                              <button className="rounded-full px-2 py-1 text-xs">
+                                XS
+                              </button>
+                              <button className="rounded-full px-2 py-1 text-xs">
+                                S
+                              </button>
+                              <button className="rounded-full px-2 py-1 text-xs">
+                                XL
+                              </button>
+                            </div>
                           </div>
 
-                          <button className="btn-add-cart mt-1 py-2 px-3 rounded">
+                          <button className="btn-add-cart w-full mt-4 py-2 px-3 rounded">
                             Add to Cart
                           </button>
                         </div>
@@ -206,64 +221,64 @@ export default function Home() {
         )}
       </div>
       {/* about Kfc sesction */}
-      <section class="py-24 relative">
-        <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
-          <div class="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1">
-            <div class="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last">
-              <div class="pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex">
+      <section className="py-24 relative">
+        <div className="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
+          <div className="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1">
+            <div className="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last">
+              <div className="pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex">
                 <img
-                  class=" rounded-xl object-cover"
+                  className=" rounded-xl object-cover"
                   src="https://i.pinimg.com/originals/24/50/fc/2450fcf22635b5cf4678aeaffb7be9c8.jpg"
                   alt="about Us image"
                 />
               </div>
               <img
-                class="sm:ml-0 ml-auto rounded-xl object-cover"
-                src="https://i.pinimg.com/736x/c6/e4/5f/c6e45fb6b7a25a216754aff0abf82776.jpg"
+                className="sm:ml-0 ml-auto rounded-xl object-cover"
+                src="https://trendmedia.h5mag.com/trendmedia/kfc_delivery_april_2020/cover/75025/KFC_Delivery_480x670.960_0_1.png"
                 alt="about Us image"
               />
             </div>
-            <div class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
-              <div class="w-full flex-col justify-center items-start gap-8 flex">
-                <div class="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
-                  <h2 class="about-kfc-bottom text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
+            <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
+              <div className="w-full flex-col justify-center items-start gap-8 flex">
+                <div className="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
+                  <h2 className="about-kfc-bottom text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
                     KFC Historical Archives
                   </h2>
-                  <p class="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
+                  <p className="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
                     The Colonel is the most iconic symbol we have. We proudly
                     display him as our symbol for all things Always Original,
                     all the time.
                   </p>
                 </div>
-                <div class="w-full lg:justify-start justify-center items-center sm:gap-10 gap-5 inline-flex">
-                  <div class="flex-col justify-start items-start inline-flex">
-                    <h3 class="about-kfc-bottom text-4xl font-bold font-manrope leading-normal">
+                <div className="w-full lg:justify-start justify-center items-center sm:gap-10 gap-5 inline-flex">
+                  <div className="flex-col justify-start items-start inline-flex">
+                    <h3 className="about-kfc-bottom text-4xl font-bold font-manrope leading-normal">
                       72+
                     </h3>
-                    <h6 class="text-gray-500 text-base font-normal leading-relaxed">
+                    <h6 className="text-gray-500 text-base font-normal leading-relaxed">
                       Years Of Service
                     </h6>
                   </div>
-                  <div class="flex-col justify-start items-start inline-flex">
-                    <h4 class="about-kfc-bottom text-4xl font-bold font-manrope leading-normal">
+                  <div className="flex-col justify-start items-start inline-flex">
+                    <h4 className="about-kfc-bottom text-4xl font-bold font-manrope leading-normal">
                       140+
                     </h4>
-                    <h6 class="text-gray-500 text-base font-normal leading-relaxed">
+                    <h6 className="text-gray-500 text-base font-normal leading-relaxed">
                       Restaurant
                     </h6>
                   </div>
-                  <div class="flex-col justify-start items-start inline-flex">
-                    <h4 class="about-kfc-bottom text-4xl font-bold font-manrope leading-normal">
+                  <div className="flex-col justify-start items-start inline-flex">
+                    <h4 className="about-kfc-bottom text-4xl font-bold font-manrope leading-normal">
                       52+
                     </h4>
-                    <h6 class="text-gray-500 text-base font-normal leading-relaxed">
+                    <h6 className="text-gray-500 text-base font-normal leading-relaxed">
                       Millions Of People
                     </h6>
                   </div>
                 </div>
               </div>
-              <button class="about-kfc-bottom-btn sm:w-fit w-full px-3.5 py-2 transition-all duration-700 ease-in-out rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] justify-center items-center flex">
-                <span class="px-1.5 text-white text-sm font-medium leading-6">
+              <button className="about-kfc-bottom-btn sm:w-fit w-full px-3.5 py-2 transition-all duration-700 ease-in-out rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] justify-center items-center flex">
+                <span className="px-1.5 text-white text-sm font-medium leading-6">
                   Read More
                 </span>
               </button>
