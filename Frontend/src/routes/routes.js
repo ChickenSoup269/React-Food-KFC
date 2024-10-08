@@ -8,6 +8,7 @@ const routes = {
   recoveryPass: '/recoveryPass',
   search: '/search',
   menuPage: '/menu',
+  cart: '/cart',
 };
 
 export default routes;

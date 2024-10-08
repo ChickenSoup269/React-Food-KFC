@@ -4,6 +4,7 @@ import Register from '~/pages/register';
 import RecoveryPassword from '~/pages/recovery-pass';
 import SearchPage from '~/pages/search';
 import MenuPage from '~/pages/menu';
+import Cart from '~/pages/cart';
 
 const publicRoutes = [
   {
@@ -29,6 +30,10 @@ const publicRoutes = [
   {
     path: '/menu',
     component: MenuPage,
+  },
+  {
+    path: '/cart',
+    component: Cart,
   },
 ];
 

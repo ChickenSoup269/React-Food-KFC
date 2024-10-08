@@ -85,10 +85,12 @@ export default function Header() {
 
           <Translate />
 
-          <FontAwesomeIcon
-            icon={faShoppingCart}
-            className="icon-shopping-cart"
-          />
+          <a href={routes.cart}>
+            <FontAwesomeIcon
+              icon={faShoppingCart}
+              className="icon-shopping-cart"
+            />
+          </a>
 
           {/* button login */}
           <a href={routes.login}>
