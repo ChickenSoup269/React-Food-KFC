@@ -154,8 +154,8 @@ export default function Home() {
                 {category}
               </h1>
               <Swiper
-                spaceBetween={10}
-                slidesPerView={5} // Adjust the number of slides as needed
+                spaceBetween={5}
+                slidesPerView={4} // Adjust the number of slides as needed
                 navigation
                 pagination={{ clickable: true }}
                 modules={[Navigation]}
@@ -165,26 +165,38 @@ export default function Home() {
                   .filter((product) => product.category === category)
                   .map((product, index) => (
                     <SwiperSlide key={index}>
-                      <div className="product-card p-2 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <div className="product-card mx-auto mt-11 w-46 transform overflow-hidden rounded-lg shadow-md duration-300 hover:scale-105 hover:shadow-lg">
                         <div className="flex justify-center">
                           <img
+                            className="product-card-img h-40 w-36 object-cover object-center"
                             src={product.image}
                             alt={product.name}
-                            className="product-card-img w-36 h-32 object-cover rounded-md mb-2"
                           />
                         </div>
-                        <h3 className="product-card-name text-sm font-semibold mb-1">
-                          {product.name}
-                        </h3>
-                        <p className="text-gray-600 mb-2 text-sm">
-                          {product.description}
-                        </p>
-                        <p className="product-card-price font-bold text-lg">
-                          ${product.price}
-                        </p>
-                        <button className="btn-add-cart mt-1 py-2 px-3 rounded ">
-                          Add to Cart
-                        </button>
+
+                        <div className="p-4">
+                          <h2 className="product-card-name mb-2 text-base font-medium ">
+                            {product.name}
+                          </h2>
+                          <p className="product-card-description mb-2 text-base ">
+                            {product.description}
+                          </p>
+                          <div className="flex items-center">
+                            <p className="product-card-price mr-2 text-lg font-semibold line-through dark:text-gray-300">
+                              ${product.price}
+                            </p>
+                            <p className="product-card-price-sales text-white text-base font-medium ">
+                              $25.00
+                            </p>
+                            <p className="ml-auto text-base font-medium text-green-500">
+                              20% off
+                            </p>
+                          </div>
+
+                          <button className="btn-add-cart mt-1 py-2 px-3 rounded">
+                            Add to Cart
+                          </button>
+                        </div>
                       </div>
                     </SwiperSlide>
                   ))}

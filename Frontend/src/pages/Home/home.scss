@@ -64,6 +64,7 @@
   right: -50px;
   clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
+
 // button category
 .btn-category {
   background-color: var(--secondary-color);
@@ -81,7 +82,7 @@
 
 //  product-card
 .product-card {
-  width: 250px;
+  width: 300px;
   background: var(--activeProductCard);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -98,6 +99,10 @@
   &:hover {
     transform: scale(1.1);
   }
+}
+
+.product-card-description {
+  color: var(--activeDescriptionCard);
 }
 
 // button add cart
