@@ -6,6 +6,7 @@ const routes = {
   login: '/login',
   register: '/register',
   recoveryPass: '/recoveryPass',
+  search: '/search',
 };
 
 export default routes;

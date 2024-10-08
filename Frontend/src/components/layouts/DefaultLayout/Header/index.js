@@ -39,15 +39,15 @@ export default function Header() {
     <header
       className={cx(
         'wrapper-header w-full z-20 transition-all duration-500 ease-in-out',
-        isScrolled
-          ? 'fixed top-0 start-0 text-white shadow-lg'
-          : 'relative text-white z-10'
+        isScrolled ? 'fixed top-0 start-0 shadow-lg' : 'relative z-10 shadow-lg'
       )}
       style={{
         backgroundColor: isScrolled
           ? 'var(--activeBg)'
-          : 'var(--secondary-color)', // Inline style for background-color
-        transition: 'background-color 0.5s, padding 0.5s, box-shadow 0.5s',
+          : 'var(--secondary-color)',
+        color: isScrolled ? 'var(--activeText)' : 'white', // Text color ch
+        transition:
+          'background-color 0.5s, padding 0.5s, box-shadow 0.5s, color 0.5s', // Ensure the color transition is smooth
       }}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
@@ -82,15 +82,16 @@ export default function Header() {
           />
 
           {/* button login */}
-          <button
-            type="button"
-            className={cx(
-              'btn-login focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center capitalize'
-            )}
-          >
-            <a href={routes.login}>{translations[language].login}</a>
-          </button>
-
+          <a href={routes.login}>
+            <button
+              type="button"
+              className={cx(
+                'btn-login focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center capitalize'
+              )}
+            >
+              {translations[language].login}
+            </button>
+          </a>
           {/* bar menu moblie */}
           <button
             data-collapse-toggle="navbar-sticky"

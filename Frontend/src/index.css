@@ -20,12 +20,14 @@
   --background-white: white;
   --background-black: black;
   --boxShadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --transparent: transparent;
 }
 
 body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   background-color: var(--activeBackground);
+
   color: rgb(0, 0, 0);
   transition:
     0.3s ease,
@@ -68,7 +70,7 @@ body {
   --activeGlowImg: blur(30px) saturate(4);
   --activeTextShadow: 3px 3px 13px rgba(217, 0, 0, 0.59);
   --activeScrollBar: var(--primary-color);
-  --activeProductCard: #ffd685;
+  --activeProductCard: #33322f;
 }
 
 /* custom scroll bar */

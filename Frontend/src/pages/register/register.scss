@@ -1,0 +1,34 @@
+.wrapper-sign-up {
+  height: 100vh;
+  width: 99vw;
+  background-image: radial-gradient(
+    120% 100% at top left,
+    var(--secondary-color) 91%,
+    transparent 82%
+  );
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.forgot-password-text,
+.sign-up-text {
+  color: white;
+  transition: all ease-in-out 0.3s;
+}
+
+.forgot-password-text {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.sign-up-text {
+  background-color: black;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+}

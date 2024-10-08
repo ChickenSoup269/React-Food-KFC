@@ -2,6 +2,7 @@ import Home from '~/pages/home';
 import Login from '~/pages/login';
 import Register from '~/pages/register';
 import RecoveryPassword from '~/pages/recovery-pass';
+import SearchPage from '../pages/search';
 
 const publicRoutes = [
   {
@@ -19,6 +20,10 @@ const publicRoutes = [
   {
     path: '/recoveryPass',
     component: RecoveryPassword,
+  },
+  {
+    path: '/search',
+    component: SearchPage,
   },
 ];
 

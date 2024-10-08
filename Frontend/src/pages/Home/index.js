@@ -90,8 +90,8 @@ export default function Home() {
         <Swiper
           spaceBetween={10}
           slidesPerView={4} // 4 thumbnails per row
-          onSwiper={setThumbsSwiper} // Set the Swiper instance for thumbs
-          watchSlidesProgress // Track active slide
+          onSwiper={setThumbsSwiper}
+          watchSlidesProgress
           modules={[Thumbs]}
           className="swiper-container-thumbs overflow-visible"
         >
@@ -104,7 +104,7 @@ export default function Home() {
                     src={image}
                     alt={`Glow Thumbnail ${index + 1}`}
                     className="w-full h-full object-cover rounded-lg"
-                    style={{ filter: 'var(--activeGlowImg)' }} // Applying glow effect based on theme
+                    style={{ filter: 'var(--activeGlowImg)' }} // css glowing img
                   />
                 </div>
                 {/* The original thumbnail */}
@@ -193,6 +193,7 @@ export default function Home() {
           )
         )}
       </div>
+      {/* about Kfc sesction */}
       <section class="py-24 relative">
         <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
           <div class="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1">
