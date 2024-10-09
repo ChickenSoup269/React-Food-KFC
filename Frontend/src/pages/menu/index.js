@@ -4,28 +4,43 @@ import clsx from 'clsx';
 import styles from './menu.scss';
 import products from '~/components/Products/products';
 import ProductCard from '~/components/Products/product-card';
+import CategoryButton from '~/components/Button/categoryButton';
 
 const cx = clsx.bind(styles);
+
 export default function MenuPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [activeCategory, setActiveCategory] = useState(null);
 
+  // Hàm xử lý khi thay đổi nội dung tìm kiếm
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
+  // Hàm xử lý khi submit form tìm kiếm
   const handleSearchSubmit = (event) => {
-    event.preventDefault(); // Prevent form from submitting
-    const lowercasedQuery = searchQuery.toLowerCase();
-
-    const filtered = products.filter((product) =>
-      product.name.toLowerCase().includes(lowercasedQuery)
-    );
-
-    setFilteredProducts(filtered);
+    event.preventDefault();
+    filterProducts(searchQuery, activeCategory); // Thực hiện lọc dựa trên từ khóa tìm kiếm và danh mục
   };
 
-  const [activeCategory, setActiveCategory] = useState(null);
+  // Hàm xử lý khi chọn danh mục
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category); // Cập nhật danh mục đang chọn
+    filterProducts(searchQuery, category); // Thực hiện lọc sản phẩm dựa trên danh mục và từ khóa tìm kiếm
+  };
+
+  // Hàm lọc sản phẩm dựa trên từ khóa tìm kiếm và danh mục
+  const filterProducts = (query, category) => {
+    const lowercasedQuery = query.toLowerCase();
+    const filtered = products.filter((product) => {
+      const matchesCategory = !category || product.category === category; // Nếu không có danh mục, trả về tất cả
+      const matchesQuery = product.name.toLowerCase().includes(lowercasedQuery); // Kiểm tra từ khóa
+      return matchesCategory && matchesQuery;
+    });
+
+    setFilteredProducts(filtered); // Cập nhật danh sách sản phẩm đã lọc
+  };
 
   return (
     <div className={cx('wrapper-menu-page')}>
@@ -35,6 +50,7 @@ export default function MenuPage() {
             Search Food In ZFC
           </p>
 
+          {/* Form tìm kiếm */}
           <form onSubmit={handleSearchSubmit}>
             <label
               className="mx-auto mt-8 relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border py-2 px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
@@ -47,7 +63,6 @@ export default function MenuPage() {
                 placeholder="Search food"
                 name="q"
                 className="px-6 py-2 w-full rounded-md flex-1 outline-none bg-white"
-                required
               />
               <button
                 type="submit"
@@ -62,27 +77,30 @@ export default function MenuPage() {
             </label>
           </form>
         </div>
-        {/* button */}
+
+        {/* Các nút chọn danh mục */}
         <div className="flex justify-center">
           <div className="button-container flex space-x-2 mb-1">
+            <CategoryButton
+              key="All"
+              category="All"
+              activeCategory={activeCategory}
+              onClick={() => handleCategoryClick(null)} // Trả về tất cả sản phẩm khi nhấn nút "All"
+            />
             {Array.from(
               new Set(products.map((product) => product.category))
             ).map((category) => (
-              <button
+              <CategoryButton
                 key={category}
-                className={`btn-category text-white py-2 px-4 rounded-lg shadow-lg ${
-                  activeCategory === category
-                    ? 'bg-[var(--thirdary-color)]'
-                    : 'bg-[var(--secondary-color)]'
-                }`} // Use CSS variables for button colors
-              >
-                {category}
-              </button>
+                category={category}
+                activeCategory={activeCategory}
+                onClick={() => handleCategoryClick(category)} // Thực hiện lọc sản phẩm theo danh mục
+              />
             ))}
           </div>
         </div>
 
-        {/* Product Cards Section */}
+        {/* Phần hiển thị sản phẩm */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8 mb-10">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />

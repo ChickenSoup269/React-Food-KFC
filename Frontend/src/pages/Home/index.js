@@ -10,6 +10,7 @@ import clsx from 'clsx';
 import styles from './home.scss';
 import products from '~/components/Products/products';
 import ProductCard from '~/components/Products/product-card';
+import CategoryButton from '~/components/Button/categoryButton';
 
 const cx = clsx.bind(styles);
 
@@ -129,17 +130,12 @@ export default function Home() {
             {Array.from(
               new Set(products.map((product) => product.category))
             ).map((category) => (
-              <button
+              <CategoryButton
                 key={category}
+                category={category}
                 onClick={() => scrollToSection(category)}
-                className={`btn-category text-white py-2 px-4 rounded-lg shadow-lg ${
-                  activeCategory === category
-                    ? 'bg-[var(--thirdary-color)]'
-                    : 'bg-[var(--secondary-color)]'
-                }`} // Use CSS variables for button colors
-              >
-                {category}
-              </button>
+                activeCategory={activeCategory} // Truyền activeCategory
+              />
             ))}
           </div>
         </div>
