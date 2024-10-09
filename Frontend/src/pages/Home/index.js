@@ -140,7 +140,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Product Sections */}
+        {/* Product Sections hiển thị sản phẩm */}
         {Array.from(new Set(products.map((product) => product.category))).map(
           (category) => (
             <div
