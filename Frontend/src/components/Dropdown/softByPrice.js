@@ -13,6 +13,7 @@ export default function SoftByPrice({ selectedSort, onSortChange }) {
     onSortChange(order); // Gọi hàm từ props để thông báo về lựa chọn mới
     setIsDropdownOpen(false); // Đóng dropdown
   };
+
   return (
     <div className="wrapper-soft-by-price">
       <div className="hs-dropdown relative inline-flex mt-2">

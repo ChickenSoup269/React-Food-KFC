@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-
 import styles from './menu.scss';
 import products from '~/components/Products/products';
 import ProductCard from '~/components/Products/product-card';
@@ -14,7 +13,8 @@ export default function MenuPage() {
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [activeCategory, setActiveCategory] = useState(null);
   const [sortOrder, setSortOrder] = useState('default');
-  const [selectedSort, setSelectedSort] = useState('Sort by price');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedSort, setSelectedSort] = useState('Sort by price'); // Trạng thái cho tên đã chọn
 
   // Hàm xử lý khi thay đổi nội dung tìm kiếm
   const handleSearchChange = (event) => {
@@ -39,15 +39,13 @@ export default function MenuPage() {
     const filtered = products.filter((product) => {
       const matchesCategory = !category || product.category === category;
       const matchesQuery = product.name.toLowerCase().includes(lowercasedQuery);
-      const hasDiscount = product.discount > 0;
-
-      return matchesCategory && matchesQuery && hasDiscount;
+      return matchesCategory && matchesQuery;
     });
 
     setFilteredProducts(filtered);
 
     if (sortOrder !== 'default') {
-      sortProducts(filtered, sortOrder);
+      sortProducts(filtered);
     }
   };
 
@@ -66,6 +64,7 @@ export default function MenuPage() {
 
     setSelectedSort(sortText);
     sortProducts(filteredProducts, order);
+    setIsDropdownOpen(false); // Đóng dropdown sau khi chọn
   };
 
   // Hàm sắp xếp sản phẩm
@@ -84,6 +83,7 @@ export default function MenuPage() {
         );
         break;
       case 'sale':
+        // Sắp xếp theo discount (giảm giá) nếu có
         sortedProducts.sort((a, b) => b.discount - a.discount);
         break;
       default:
@@ -91,6 +91,11 @@ export default function MenuPage() {
     }
 
     setFilteredProducts(sortedProducts);
+  };
+
+  // Hàm để toggle dropdown
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
   };
 
   return (
@@ -151,7 +156,6 @@ export default function MenuPage() {
           </div>
         </div>
 
-        {/* Dropdown cho sắp xếp */}
         <div className="flex justify-end">
           <SoftByPrice
             selectedSort={selectedSort}
@@ -159,8 +163,8 @@ export default function MenuPage() {
           />
         </div>
 
-        {/* Hiển thị danh sách sản phẩm */}
-        <div className="product-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {/* Phần hiển thị sản phẩm */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-2 mb-10">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
