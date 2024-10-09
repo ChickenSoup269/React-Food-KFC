@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-
 import clsx from 'clsx';
+
 import styles from './menu.scss';
 import products from '~/components/Products/products';
 import ProductCard from '~/components/Products/product-card';
 import CategoryButton from '~/components/Button/categoryButton';
+import SoftByPrice from '~/components/Dropdown/softByPrice';
 
 const cx = clsx.bind(styles);
 
@@ -12,6 +13,8 @@ export default function MenuPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [sortOrder, setSortOrder] = useState('default');
+  const [selectedSort, setSelectedSort] = useState('Sort by price');
 
   // Hàm xử lý khi thay đổi nội dung tìm kiếm
   const handleSearchChange = (event) => {
@@ -21,31 +24,79 @@ export default function MenuPage() {
   // Hàm xử lý khi submit form tìm kiếm
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    filterProducts(searchQuery, activeCategory); // Thực hiện lọc dựa trên từ khóa tìm kiếm và danh mục
+    filterProducts(searchQuery, activeCategory);
   };
 
   // Hàm xử lý khi chọn danh mục
   const handleCategoryClick = (category) => {
-    setActiveCategory(category); // Cập nhật danh mục đang chọn
-    filterProducts(searchQuery, category); // Thực hiện lọc sản phẩm dựa trên danh mục và từ khóa tìm kiếm
+    setActiveCategory(category);
+    filterProducts(searchQuery, category);
   };
 
-  // Hàm lọc sản phẩm dựa trên từ khóa tìm kiếm và danh mục
+  // Hàm lọc sản phẩm
   const filterProducts = (query, category) => {
     const lowercasedQuery = query.toLowerCase();
     const filtered = products.filter((product) => {
-      const matchesCategory = !category || product.category === category; // Nếu không có danh mục, trả về tất cả
-      const matchesQuery = product.name.toLowerCase().includes(lowercasedQuery); // Kiểm tra từ khóa
-      return matchesCategory && matchesQuery;
+      const matchesCategory = !category || product.category === category;
+      const matchesQuery = product.name.toLowerCase().includes(lowercasedQuery);
+      const hasDiscount = product.discount > 0;
+
+      return matchesCategory && matchesQuery && hasDiscount;
     });
 
-    setFilteredProducts(filtered); // Cập nhật danh sách sản phẩm đã lọc
+    setFilteredProducts(filtered);
+
+    if (sortOrder !== 'default') {
+      sortProducts(filtered, sortOrder);
+    }
+  };
+
+  // Hàm xử lý sắp xếp sản phẩm
+  const handleSortChange = (order) => {
+    setSortOrder(order);
+    let sortText = '';
+
+    if (order === 'priceAsc') {
+      sortText = 'Low to High';
+    } else if (order === 'priceDesc') {
+      sortText = 'High to Low';
+    } else if (order === 'sale') {
+      sortText = 'Sort by Sale';
+    }
+
+    setSelectedSort(sortText);
+    sortProducts(filteredProducts, order);
+  };
+
+  // Hàm sắp xếp sản phẩm
+  const sortProducts = (productsToSort, order) => {
+    let sortedProducts = [...productsToSort];
+
+    switch (order) {
+      case 'priceAsc':
+        sortedProducts.sort(
+          (a, b) => parseFloat(a.price) - parseFloat(b.price)
+        );
+        break;
+      case 'priceDesc':
+        sortedProducts.sort(
+          (a, b) => parseFloat(b.price) - parseFloat(a.price)
+        );
+        break;
+      case 'sale':
+        sortedProducts.sort((a, b) => b.discount - a.discount);
+        break;
+      default:
+        break;
+    }
+
+    setFilteredProducts(sortedProducts);
   };
 
   return (
     <div className={cx('wrapper-menu-page')}>
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="relative isolate overflow-hidden px-6 py-20 text-center sm:px-16">
+        <div className="relative isolate overflow-hidden px-6 py-10 text-center sm:px-16">
           <p className="title-search-menu mx-auto max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
             Search Food In ZFC
           </p>
@@ -85,7 +136,7 @@ export default function MenuPage() {
               key="All"
               category="All"
               activeCategory={activeCategory}
-              onClick={() => handleCategoryClick(null)} // Trả về tất cả sản phẩm khi nhấn nút "All"
+              onClick={() => handleCategoryClick(null)}
             />
             {Array.from(
               new Set(products.map((product) => product.category))
@@ -94,14 +145,22 @@ export default function MenuPage() {
                 key={category}
                 category={category}
                 activeCategory={activeCategory}
-                onClick={() => handleCategoryClick(category)} // Thực hiện lọc sản phẩm theo danh mục
+                onClick={() => handleCategoryClick(category)}
               />
             ))}
           </div>
         </div>
 
-        {/* Phần hiển thị sản phẩm */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8 mb-10">
+        {/* Dropdown cho sắp xếp */}
+        <div className="flex justify-end">
+          <SoftByPrice
+            selectedSort={selectedSort}
+            onSortChange={handleSortChange}
+          />
+        </div>
+
+        {/* Hiển thị danh sách sản phẩm */}
+        <div className="product-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

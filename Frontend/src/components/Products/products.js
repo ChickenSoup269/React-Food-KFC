@@ -264,7 +264,7 @@ const products = [
       'https://www.kfc-suisse.ch/fileadmin/media/images/Produkte/All_in_the_Box/thumb_box_3er.png',
     name: '3er Box',
     description: 'Twist of flavor in every bite.',
-    price: '1.99',
+    price: '18.99',
     category: 'All in the box',
     size: ['s'],
     discount: 25,

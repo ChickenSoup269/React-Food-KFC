@@ -1,4 +1,8 @@
 import React from 'react';
+import clsx from 'clsx';
+import styles from './products.scss';
+
+const cx = clsx.bind(styles);
 
 export default function ProductCard({ product }) {
   const originalPrice = parseFloat(product.price);
@@ -6,7 +10,7 @@ export default function ProductCard({ product }) {
   const salePrice = originalPrice - (originalPrice * discountPercentage) / 100;
 
   return (
-    <div className="wrapper-product-card">
+    <div className={cx('wrapper-product-card')}>
       <div className="product-card mx-auto mt-11 w-46 transform overflow-hidden rounded-lg shadow-md duration-300 hover:scale-105 hover:shadow-lg">
         <div className="relative flex justify-center">
           {/* Product image */}
