@@ -9,7 +9,7 @@ import 'swiper/css/thumbs';
 import clsx from 'clsx';
 import styles from './home.scss';
 import products from '~/components/Products/products';
-import ProductCard from '~/components/Products/product-card';
+import ProductCard from '~/components/Products';
 import CategoryButton from '~/components/Button/categoryButton';
 
 const cx = clsx.bind(styles);

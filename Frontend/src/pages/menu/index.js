@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import styles from './menu.scss';
 import products from '~/components/Products/products';
-import ProductCard from '~/components/Products/product-card';
+import ProductCard from '~/components/Products';
 import CategoryButton from '~/components/Button/categoryButton';
 import SoftByPrice from '~/components/Dropdown/softByPrice';
 

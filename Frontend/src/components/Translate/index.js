@@ -2,8 +2,9 @@ import React, { useRef, useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons';
-import styles from './translate.scss';
+
 import { useLanguage } from './LanguageContext';
+import styles from './translate.scss';
 
 const cx = clsx.bind(styles);
 
