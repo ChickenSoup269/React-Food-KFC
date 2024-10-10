@@ -12,7 +12,6 @@ export default function Translate() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const { language, handleLanguageChange } = useLanguage();
-
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
