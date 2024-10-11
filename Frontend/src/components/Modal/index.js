@@ -50,18 +50,19 @@ function ModalAddProduct({ product, isModalOpen, closeModal }) {
   // Hàm xử lý khi nhấn nút "Add to Cart"
   const handleAddToCart = () => {
     if (!selectedSize) {
-      toast.info('Please select a size before adding to cart!', {
-        autoClose: 3000,
+      notifyInfo('Please select a size before adding to cart!');
+      return;
+    } else {
+      notifySuccess('Add product success');
+
+      // Logic để thêm sản phẩm vào giỏ hàng ở đây
+      console.log('Product added to cart:', {
+        product: product.name,
+        size: selectedSize,
+        quantity,
+        totalPrice,
       });
-      return; // Ngăn chặn thêm sản phẩm vào giỏ hàng
     }
-    // Logic để thêm sản phẩm vào giỏ hàng ở đây
-    console.log('Product added to cart:', {
-      product: product.name,
-      size: selectedSize,
-      quantity,
-      totalPrice,
-    });
   };
 
   // Tổng giá sau khi tính theo size và số lượng
@@ -69,18 +70,17 @@ function ModalAddProduct({ product, isModalOpen, closeModal }) {
 
   return (
     <div className={cx('wrapper-modal-add-product')}>
-      {/* Modal Popup */}
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         className="modal-content"
         overlayClassName="modal-overlay"
+        closeTimeoutMS={300}
       >
         <h2 className="text-lg font-bold mb-4">Select Size and Quantity</h2>
-        {/* Thêm ảnh và tên sản phẩm vào modal */}
         <div className="flex items-center mb-4">
           <img
-            src={product.image} // Hiển thị hình ảnh sản phẩm
+            src={product.image}
             alt={product.name}
             className="h-24 w-24 object-cover mr-4"
           />
@@ -104,7 +104,6 @@ function ModalAddProduct({ product, isModalOpen, closeModal }) {
                       ? 'var(--primary-color)'
                       : 'var(--thirdary-color)',
                   color: selectedSize === size ? 'black' : 'white',
-
                   padding: '0.5rem 1rem',
                   borderRadius: '9999px',
                   textTransform: 'uppercase',
@@ -117,13 +116,10 @@ function ModalAddProduct({ product, isModalOpen, closeModal }) {
           </div>
         </div>
 
-        {/* button tăng giảm, giá */}
         <ButtonSetQuality quantity={quantity} setQuantity={setQuantity} />
 
         <div className="flex justify-between mt-6">
           <ButtonExit onClick={closeModal} text="Cancel" />
-
-          {/* Button "Add to Cart" */}
           <ButtonSecondary onClick={handleAddToCart} text="Add to Cart" />
         </div>
       </Modal>
@@ -131,24 +127,25 @@ function ModalAddProduct({ product, isModalOpen, closeModal }) {
   );
 }
 
-const notifyInfo = () => {
-  toast.info('Info alert!', {
+// alert info
+const notifyInfo = (message) => {
+  toast.info(message, {
     autoClose: 3000,
-    className: 'toast-info', // Thêm class cho CSS tùy chỉnh
+    className: 'toast-info',
   });
 };
 
-const notifySuccess = () => {
-  toast.success('Success alert!', {
+const notifySuccess = (message) => {
+  toast.success(message, {
     autoClose: 3000,
-    className: 'toast-success', // Thêm class cho CSS tùy chỉnh
+    className: 'toast-success',
   });
 };
 
-const notifyWarning = () => {
-  toast.warning('Warning alert!', {
+const notifyWarning = (message) => {
+  toast.warning(message, {
     autoClose: 3000,
-    className: 'toast-warning', // Thêm class cho CSS tùy chỉnh
+    className: 'toast-warning',
   });
 };
 

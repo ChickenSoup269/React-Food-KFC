@@ -6,6 +6,16 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 10;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.modal-overlay.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.modal-overlay.ReactModal__Overlay--before-close {
+  opacity: 0;
 }
 
 .modal-content {
@@ -19,21 +29,37 @@
   max-width: 350px;
   width: 100%;
   z-index: 20;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: all 300ms ease-in-out;
 }
+
+.ReactModal__Content--after-open {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.ReactModal__Content--before-close {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.toast-info,
+.toast-success,
+.toast-warning {
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
 .toast-info {
-  background-color: blue;
-  color: #fff;
-  border-radius: 8px;
+  color: #189fff;
 }
 
 .toast-success {
-  background-color: #28a745;
-  color: #fff;
-  border-radius: 8px;
+  color: #008c2f;
 }
 
 .toast-warning {
-  background-color: #ffc107;
-  color: #212529;
-  border-radius: 8px;
+  color: #ff0808;
 }
