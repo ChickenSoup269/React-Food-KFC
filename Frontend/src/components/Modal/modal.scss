@@ -1,0 +1,39 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ece9e3;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 350px;
+  width: 100%;
+  z-index: 20;
+}
+.toast-info {
+  background-color: blue;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.toast-success {
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.toast-warning {
+  background-color: #ffc107;
+  color: #212529;
+  border-radius: 8px;
+}

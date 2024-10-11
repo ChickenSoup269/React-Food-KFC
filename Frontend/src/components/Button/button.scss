@@ -1,0 +1,47 @@
+// button primary
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+  transition: all ease-in-out 0.3s;
+  box-shadow: var(--boxShadow);
+  &:hover {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+}
+
+// button add cart
+.btn-add-cart {
+  background-color: var(--secondary-color);
+  color: white;
+  font-weight: 500;
+  transition: all ease-in-out 0.3s;
+  box-shadow: var(--boxShadow);
+  &:hover {
+    background-color: var(--primary-color);
+    color: black;
+  }
+}
+
+.btn-exit {
+  background-color: grey;
+  color: white;
+  transition: all ease-in-out 0.3s;
+  box-shadow: var(--boxShadow);
+  &:hover {
+    background-color: rgb(62, 61, 61);
+  }
+}
+
+// button size
+.btn-size-food {
+  span {
+    color: var(--activeDescriptionCard);
+  }
+
+  button {
+    color: black;
+    background-color: var(--primary-color);
+  }
+}
