@@ -17,7 +17,7 @@ export default function Cart() {
   } = useCart();
 
   const originalPrice = cartItems.reduce(
-    (total, item) => total + item.originalPrice * item.quantity,
+    (total, item) => total + item.totalPrice * item.quantity,
     0
   );
   const totalPrice = calculateTotalPrice();
