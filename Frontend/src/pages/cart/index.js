@@ -10,7 +10,7 @@ export default function Cart() {
     <div className={cx('wrapper-cart')}>
       <section className="py-8 antialiased md:py-16">
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
+          <h2 className="text-title-shopping-cart text-xl font-semibold sm:text-2xl">
             Shopping Cart
           </h2>
 
@@ -20,11 +20,6 @@ export default function Cart() {
                 <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
                   <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                     <a href="#" className="w-20 shrink-0 md:order-1">
-                      <img
-                        className="h-20 w-20 dark:hidden"
-                        src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/iphone-light.svg"
-                        alt="imac image"
-                      />
                       <img
                         className="hidden h-20 w-20 dark:block"
                         src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/iphone-dark.svg"
@@ -37,6 +32,7 @@ export default function Cart() {
                     </label>
                     <div className="flex items-center justify-between md:order-3 md:justify-end">
                       <div className="flex items-center">
+                        {/* button - */}
                         <button
                           type="button"
                           id="decrement-button-5"
@@ -68,6 +64,7 @@ export default function Cart() {
                           value="3"
                           required
                         />
+                        {/* button + */}
                         <button
                           type="button"
                           id="increment-button-5"
@@ -93,7 +90,7 @@ export default function Cart() {
                       </div>
                       <div className="text-end md:order-4 md:w-32">
                         <p className="text-base font-bold text-gray-900 dark:text-white">
-                          $2,997
+                          Product price
                         </p>
                       </div>
                     </div>
@@ -103,7 +100,7 @@ export default function Cart() {
                         href="#"
                         className="text-base font-medium text-gray-900 hover:underline dark:text-white"
                       >
-                        APPLE iPhone 15 5G phone, 256GB, Gold
+                        name product
                       </a>
 
                       <div className="flex items-center gap-4">
@@ -137,7 +134,7 @@ export default function Cart() {
               </div>
               <div className="hidden xl:mt-8 xl:block">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                  People also bought
+                  Thức ăn thêm
                 </h3>
                 <div className="mt-6 grid grid-cols-3 gap-4 sm:mt-8">
                   <div className="space-y-6 overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
@@ -246,7 +243,7 @@ export default function Cart() {
                         Original price
                       </dt>
                       <dd className="text-base font-medium text-gray-900 dark:text-white">
-                        $7,592.00
+                        giá gốc
                       </dd>
                     </dl>
 
@@ -255,7 +252,7 @@ export default function Cart() {
                         Savings
                       </dt>
                       <dd className="text-base font-medium text-green-600">
-                        -$299.00
+                        -$20
                       </dd>
                     </dl>
 
@@ -265,15 +262,6 @@ export default function Cart() {
                       </dt>
                       <dd className="text-base font-medium text-gray-900 dark:text-white">
                         $99
-                      </dd>
-                    </dl>
-
-                    <dl className="flex items-center justify-between gap-4">
-                      <dt className="text-base font-normal text-gray-500 dark:text-gray-400">
-                        Tax
-                      </dt>
-                      <dd className="text-base font-medium text-gray-900 dark:text-white">
-                        $799
                       </dd>
                     </dl>
                   </div>
@@ -345,7 +333,7 @@ export default function Cart() {
                   </div>
                   <button
                     type="submit"
-                    className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                    className="sign-in-text flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                   >
                     Apply Code
                   </button>
