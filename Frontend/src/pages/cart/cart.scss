@@ -1,3 +1,14 @@
 .text-title-shopping-cart {
   color: var(--activeText);
 }
+
+.product-card-page {
+  color: black;
+  background-color: var(--activeCartPage);
+  box-shadow: var(--boxShadow);
+  border: 1px solid var(--activeProductCard);
+}
+
+.product-text-cart {
+  color: var(--activeText);
+}

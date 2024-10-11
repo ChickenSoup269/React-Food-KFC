@@ -8,14 +8,21 @@ import { ButtonSetQuality } from '~/components/Button';
 const cx = clsx.bind(styles);
 
 export default function Cart() {
-  const { cartItems, removeFromCart, updateQuantity } = useCart(); // Add updateQuantity function here
+  const {
+    cartItems,
+    calculateTotalPrice,
+    calculateSavings,
+    updateQuantity,
+    removeFromCart,
+  } = useCart();
 
-  // Handle quantity change for a specific cart item
-  const handleQuantityChange = (itemId, newQuantity) => {
-    if (newQuantity > 0) {
-      updateQuantity(itemId, newQuantity); // Update quantity in the context
-    }
-  };
+  const originalPrice = cartItems.reduce(
+    (total, item) => total + item.originalPrice * item.quantity,
+    0
+  );
+  const totalPrice = calculateTotalPrice();
+  const savings = calculateSavings();
+  const shippingCost = 99;
 
   return (
     <div className={cx('wrapper-cart')}>
@@ -33,30 +40,33 @@ export default function Cart() {
                     cartItems.map((item, index) => (
                       <div
                         key={index}
-                        className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6"
+                        className="product-card-page rounded-lg p-4 shadow-sm md:p-6"
                       >
-                        <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
+                        <div className="product-text-cart space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                           <a href="#" className="w-20 shrink-0 md:order-1">
                             <img
                               className="h-20 w-20"
-                              src={item.image} // Image from cartItems
-                              alt={item.product} // Product name from cartItems
+                              src={item.image}
+                              alt={item.product}
                             />
                           </a>
 
                           <div className="flex items-center justify-between md:order-3 md:justify-end">
                             <div className="flex items-center">
                               <ButtonSetQuality
-                                quantity={item.quantity} // Quantity from cartItems
+                                quantity={item.quantity || 1} // Đảm bảo quantity có giá trị mặc định
                                 setQuantity={(newQuantity) =>
-                                  handleQuantityChange(item.id, newQuantity)
-                                } // Update item quantity
+                                  updateQuantity(item.id, newQuantity)
+                                } // Cập nhật số lượng
                               />
                             </div>
                             <div className="text-end md:order-4 md:w-32">
-                              <p className="text-base font-bold text-gray-900 dark:text-white">
-                                ${item.totalPrice.toFixed(2)}{' '}
-                                {/* Price from cartItems */}
+                              <p className="text-lg font-bold">
+                                $
+                                {(
+                                  (item.price || 0) * (item.quantity || 1)
+                                ).toFixed(2)}{' '}
+                                {/* Cập nhật tổng tiền và đảm bảo không có giá trị NaN */}
                               </p>
                             </div>
                           </div>
@@ -64,9 +74,10 @@ export default function Cart() {
                           <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
                             <a
                               href="#"
-                              className="text-base font-medium text-gray-900 hover:underline dark:text-white"
+                              className="text-base font-medium hover:underline "
                             >
-                              {item.product} {/* Product name */}
+                              {item.product} {/* Product name */} | Size{' '}
+                              {item.size}
                             </a>
 
                             <div className="flex items-center gap-4">
@@ -217,7 +228,7 @@ export default function Cart() {
                         Original price
                       </dt>
                       <dd className="text-base font-medium text-gray-900 dark:text-white">
-                        giá gốc
+                        ${originalPrice.toFixed(2)}
                       </dd>
                     </dl>
 
@@ -226,7 +237,7 @@ export default function Cart() {
                         Savings
                       </dt>
                       <dd className="text-base font-medium text-green-600">
-                        -$20
+                        -${savings.toFixed(2)}
                       </dd>
                     </dl>
 
@@ -235,7 +246,7 @@ export default function Cart() {
                         Store Pickup
                       </dt>
                       <dd className="text-base font-medium text-gray-900 dark:text-white">
-                        $99
+                        ${shippingCost.toFixed(2)}
                       </dd>
                     </dl>
                   </div>
@@ -245,7 +256,7 @@ export default function Cart() {
                       Total
                     </dt>
                     <dd className="text-base font-bold text-gray-900 dark:text-white">
-                      $8,191.00
+                      ${(totalPrice + shippingCost).toFixed(2)}
                     </dd>
                   </dl>
                 </div>

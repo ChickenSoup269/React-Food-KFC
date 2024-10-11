@@ -45,13 +45,16 @@ function ButtonExit({ onClick, text }) {
 }
 
 function ButtonSetQuality({ quantity, setQuantity }) {
-  // Hàm xử lý khi thay đổi số lượng
   const incrementQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
+    if (quantity < 99) {
+      setQuantity(quantity + 1); // Cập nhật số lượng trực tiếp
+    }
   };
 
   const decrementQuantity = () => {
-    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+    if (quantity > 1) {
+      setQuantity(quantity - 1); // Giảm số lượng
+    }
   };
 
   return (
@@ -59,11 +62,10 @@ function ButtonSetQuality({ quantity, setQuantity }) {
       <div className="mb-4">
         <label className="block text-base font-semibold mb-2">Quantity:</label>
 
-        {/* Button giảm số lượng */}
         <button
           type="button"
           onClick={decrementQuantity}
-          className="inline-flex h-5 w-5 items-center justify-center rounded-md border bg-gray-600 hover:bg-gray-700 "
+          className="inline-flex h-5 w-5 items-center justify-center rounded-md border bg-gray-600 hover:bg-gray-700"
         >
           <svg
             className="h-2.5 w-2.5 text-white"
@@ -81,7 +83,6 @@ function ButtonSetQuality({ quantity, setQuantity }) {
           </svg>
         </button>
 
-        {/* Hiển thị số lượng */}
         <input
           type="text"
           value={quantity}
@@ -89,11 +90,10 @@ function ButtonSetQuality({ quantity, setQuantity }) {
           className="w-10 text-center bg-transparent"
         />
 
-        {/* Button tăng số lượng */}
         <button
           type="button"
           onClick={incrementQuantity}
-          className="inline-flex h-5 w-5 items-center justify-center rounded-md border bg-gray-600 hover:bg-gray-700 "
+          className="inline-flex h-5 w-5 items-center justify-center rounded-md border bg-gray-600 hover:bg-gray-700"
         >
           <svg
             className="h-2.5 w-2.5 text-white"

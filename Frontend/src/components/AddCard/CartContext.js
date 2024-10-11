@@ -1,12 +1,18 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import Cookies from 'js-cookie'; // Import thư viện js-cookie
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // Lấy dữ liệu từ sessionStorage hoặc khởi tạo mảng rỗng
+  // Lấy dữ liệu từ cookie hoặc khởi tạo mảng rỗng nếu không có dữ liệu
   const [cartItems, setCartItems] = useState(() => {
-    const savedCartItems = sessionStorage.getItem('cartItems');
-    return savedCartItems ? JSON.parse(savedCartItems) : [];
+    try {
+      const savedCartItems = Cookies.get('cartItems'); // Lấy dữ liệu từ cookie
+      return savedCartItems ? JSON.parse(savedCartItems) : [];
+    } catch (error) {
+      console.error('Failed to parse cart items from cookies', error);
+      return [];
+    }
   });
 
   // Hàm để thêm sản phẩm vào giỏ hàng
@@ -27,9 +33,14 @@ export const CartProvider = ({ children }) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
   };
 
-  // Lưu giỏ hàng vào sessionStorage mỗi khi cartItems thay đổi
+  // Lưu giỏ hàng vào cookie mỗi khi cartItems thay đổi
   useEffect(() => {
-    sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+    try {
+      // Lưu dữ liệu vào cookie, với thời gian sống của cookie là 7 ngày
+      Cookies.set('cartItems', JSON.stringify(cartItems), { expires: 7 });
+    } catch (error) {
+      console.error('Failed to save cart items to cookies', error);
+    }
   }, [cartItems]);
 
   // Tính tổng giá của giỏ hàng
@@ -40,9 +51,39 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  // Hàm cập nhật số lượng sản phẩm trong giỏ hàng
+  const updateQuantity = (id, newQuantity) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
+
+  // tính tổng tiền card bên phải [bug]
+  const calculateTotalPrice = () => {
+    return cartItems.reduce((total, item) => {
+      return total + item.price * item.quantity;
+    }, 0);
+  };
+
+  const calculateSavings = () => {
+    return cartItems.reduce((savings, item) => {
+      return savings + (item.originalPrice - item.price) * item.quantity;
+    }, 0);
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, getTotalPrice }}
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        getTotalPrice,
+        updateQuantity,
+        calculateTotalPrice,
+        calculateSavings,
+      }}
     >
       {children}
     </CartContext.Provider>

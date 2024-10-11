@@ -19,6 +19,7 @@
   --thirdary-color: #27251f;
   --background-white: white;
   --background-black: black;
+  --background-card: #ece9e3;
   --boxShadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   --transparent: transparent;
 }
@@ -53,6 +54,7 @@ body {
   --activeScrollBar: var(--thirdary-color);
   --activeProductCard: #ece9e3;
   --activeDescriptionCard: gray;
+  --activeCartPage: var(--background-card);
 }
 [data-theme='dark'] {
   /* css switch */
@@ -73,6 +75,7 @@ body {
   --activeScrollBar: var(--primary-color);
   --activeProductCard: #33322f;
   --activeDescriptionCard: rgb(168, 168, 168);
+  --activeCartPage: #212936;
 }
 
 /* custom scroll bar */

@@ -61,6 +61,7 @@ function ModalAddProduct({ product, isModalOpen, closeModal }) {
         product: product.name,
         size: selectedSize,
         quantity,
+        price: product.price,
         totalPrice: product.price * quantity, // Calculate total price based on quantity
         image: product.image, // Add the product image
       };
