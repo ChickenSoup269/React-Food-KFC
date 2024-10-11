@@ -47,19 +47,9 @@
 .toast-info,
 .toast-success,
 .toast-warning {
-  background-color: #ffffff;
+  background-color: white;
+  color: black;
   border-radius: 10px;
-  font-size: 0.9rem;
-}
-
-.toast-info {
-  color: #189fff;
-}
-
-.toast-success {
-  color: #008c2f;
-}
-
-.toast-warning {
-  color: #ff0808;
+  font-weight: 500;
+  font-size: 0.8rem;
 }

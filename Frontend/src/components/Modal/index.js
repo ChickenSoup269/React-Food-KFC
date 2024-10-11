@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-
 import Modal from 'react-modal';
 import clsx from 'clsx';
 
@@ -10,6 +9,7 @@ import {
   ButtonExit,
   ButtonSetQuality,
 } from '~/components/Button';
+import { useCart } from '../AddCard/CartContext';
 
 // Cấu hình Modal
 Modal.setAppElement('#root');
@@ -20,6 +20,7 @@ function ModalAddProduct({ product, isModalOpen, closeModal }) {
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [adjustedPrice, setAdjustedPrice] = useState(0);
+  const { addToCart } = useCart();
 
   // Hàm xử lý khi người dùng chọn size
   const handleSizeChange = (size) => {
@@ -50,21 +51,23 @@ function ModalAddProduct({ product, isModalOpen, closeModal }) {
   // Hàm xử lý khi nhấn nút "Add to Cart"
   const handleAddToCart = () => {
     if (!selectedSize) {
-      notifyInfo('Please select a size before adding to cart!');
+      notifyWarning('Please select a size before adding to cart!');
       return;
     } else {
-      notifySuccess('Add product success');
+      notifySuccess('Product added to cart successfully!');
 
-      // Logic để thêm sản phẩm vào giỏ hàng ở đây
-      console.log('Product added to cart:', {
+      const cartItem = {
+        id: `${product.id}-${selectedSize}`, // Create a unique ID by combining product id and size
         product: product.name,
         size: selectedSize,
         quantity,
-        totalPrice,
-      });
+        totalPrice: product.price * quantity, // Calculate total price based on quantity
+        image: product.image, // Add the product image
+      };
+
+      addToCart(cartItem);
     }
   };
-
   // Tổng giá sau khi tính theo size và số lượng
   const totalPrice = adjustedPrice * quantity;
 

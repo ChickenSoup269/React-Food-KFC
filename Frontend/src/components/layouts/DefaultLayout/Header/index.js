@@ -23,7 +23,7 @@ export default function Header() {
   // Function to detect scrolling
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 10) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
