@@ -9,7 +9,7 @@ import {
   ButtonExit,
   ButtonSetQuality,
 } from '~/components/Button';
-import { useCart } from '../AddCard/CartContext';
+import { useCart } from '~/components/AddCard/CartContext';
 
 // Cấu hình Modal
 Modal.setAppElement('#root');

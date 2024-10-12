@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 import styles from './cart.scss';
-import { useCart } from '../../components/AddCard/CartContext';
+import { useCart } from '~/components/AddCard/CartContext';
 import { ButtonSetQuality } from '~/components/Button';
 
 const cx = clsx.bind(styles);
@@ -76,7 +76,7 @@ export default function Cart() {
                               href="#"
                               className="text-base font-medium hover:underline "
                             >
-                              {item.product} {/* Product name */} | Size{' '}
+                              {item.product} {/* Product name */} - Size{' '}
                               {item.size}
                             </a>
 
@@ -216,24 +216,24 @@ export default function Cart() {
             </div>
 
             <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
-              <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-                <p className="text-xl font-semibold text-gray-900 dark:text-white">
+              <div className="product-card-page space-y-4 rounded-lg border p-4 shadow-lg sm:p-6">
+                <p className="text-data-cart text-xl font-semibold">
                   Order summary
                 </p>
 
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <dl className="flex items-center justify-between gap-4">
-                      <dt className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      <dt className="text-data-cart text-base font-normal">
                         Original price
                       </dt>
-                      <dd className="text-base font-medium text-gray-900 dark:text-white">
+                      <dd className="text-data-cart text-base font-medium">
                         ${originalPrice.toFixed(2)}
                       </dd>
                     </dl>
 
                     <dl className="flex items-center justify-between gap-4">
-                      <dt className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      <dt className="text-data-cart text-base font-normal">
                         Savings
                       </dt>
                       <dd className="text-base font-medium text-green-600">
@@ -241,21 +241,21 @@ export default function Cart() {
                       </dd>
                     </dl>
 
-                    <dl className="flex items-center justify-between gap-4">
-                      <dt className="text-base font-normal text-gray-500 dark:text-gray-400">
+                    <dl className="text-data-cart flex items-center justify-between gap-4">
+                      <dt className="text-data-cart text-base font-normal">
                         Store Pickup
                       </dt>
-                      <dd className="text-base font-medium text-gray-900 dark:text-white">
+                      <dd className="text-data-cart text-base font-medium">
                         ${shippingCost.toFixed(2)}
                       </dd>
                     </dl>
                   </div>
 
                   <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-                    <dt className="text-base font-bold text-gray-900 dark:text-white">
+                    <dt className="text-data-cart text-base font-bold ">
                       Total
                     </dt>
-                    <dd className="text-base font-bold text-gray-900 dark:text-white">
+                    <dd className="text-data-cart text-base font-bold">
                       ${(totalPrice + shippingCost).toFixed(2)}
                     </dd>
                   </dl>
@@ -298,12 +298,12 @@ export default function Cart() {
                 </div>
               </div>
 
-              <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
+              <div className="product-card-page space-y-4 rounded-lg sm:p-6">
                 <form className="space-y-4">
                   <div>
                     <label
                       for="voucher"
-                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                      className="text-data-cart mb-2 block text-sm font-medium "
                     >
                       {' '}
                       Do you have a voucher or gift card?{' '}
@@ -311,7 +311,7 @@ export default function Cart() {
                     <input
                       type="text"
                       id="voucher"
-                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                      className="text-data-cart block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm focus:border-primary-500 focus:ring-primary-500 text-black"
                       placeholder=""
                       required
                     />
