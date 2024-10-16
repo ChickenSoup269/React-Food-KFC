@@ -7,8 +7,8 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import styles from './header.scss';
 import routes from '~/routes/routes.js';
 import logoImage2 from '~/assets/images/logo2.png';
-import ThemeLightDark from '~/components/Theme';
 import { useLanguage } from '~/components/Translate/LanguageContext';
+import ThemeLightDark from '~/components/Theme';
 import Translate from '~/components/Translate';
 import translations from '~/components/Translate/translations';
 
