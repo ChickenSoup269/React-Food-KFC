@@ -22,7 +22,7 @@ export default function Cart() {
   );
   const totalPrice = calculateTotalPrice();
   const savings = calculateSavings();
-  const shippingCost = 99;
+  const shippingCost = 1;
 
   return (
     <div className={cx('wrapper-cart')}>
@@ -246,7 +246,7 @@ export default function Cart() {
                         Store Pickup
                       </dt>
                       <dd className="text-data-cart text-base font-medium">
-                        ${shippingCost.toFixed(2)}
+                        {/* ${shippingCost.toFixed(2)} */}
                       </dd>
                     </dl>
                   </div>

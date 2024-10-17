@@ -60,7 +60,7 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  // tính tổng tiền card bên phải [bug]
+  // Tính tổng tiền card bên phải [bug]
   const calculateTotalPrice = () => {
     return cartItems.reduce((total, item) => {
       return total + item.totalPrice * item.quantity;

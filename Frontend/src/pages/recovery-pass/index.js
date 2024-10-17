@@ -1,4 +1,4 @@
-import React from 'react';
+import react from 'react';
 import styles from './recovery-pass.scss';
 import clsx from 'clsx';
 import routes from '~/routes/routes';
