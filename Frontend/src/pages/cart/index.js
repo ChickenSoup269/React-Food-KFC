@@ -1,29 +1,32 @@
-import React from 'react';
-import clsx from 'clsx';
+import React, { useState } from 'react'
+import clsx from 'clsx'
 
-import styles from './cart.scss';
-import { useCart } from '~/components/AddCard/CartContext';
-import { ButtonSetQuality } from '~/components/Button';
+import styles from './cart.scss'
+import { useCart } from '~/components/AddCard/CartContext'
+import { ButtonSetQuality } from '~/components/Button'
 
-const cx = clsx.bind(styles);
+const cx = clsx.bind(styles)
 
 export default function Cart() {
-  const {
-    cartItems,
-    calculateTotalPrice,
-    calculateSavings,
-    updateQuantity,
-    removeFromCart,
-  } = useCart();
+  const { cartItems, calculateTotalPrice, calculateSavings, updateQuantity, removeFromCart } =
+    useCart()
+  const [animatingIds, setAnimatingIds] = useState([])
 
   const originalPrice = cartItems.reduce(
     (total, item) => total + item.totalPrice * item.quantity,
     0
-  );
-  const totalPrice = calculateTotalPrice();
-  const savings = calculateSavings();
-  const shippingCost = 1;
+  )
+  const totalPrice = calculateTotalPrice()
+  const savings = calculateSavings()
+  const shippingCost = 1
 
+  const handleRemoveItem = (itemId) => {
+    setAnimatingIds((prev) => [...prev, itemId])
+    setTimeout(() => {
+      removeFromCart(itemId)
+      setAnimatingIds((prev) => prev.filter((id) => id !== itemId))
+    }, 300)
+  }
   return (
     <div className={cx('wrapper-cart')}>
       <section className="py-8 antialiased md:py-16">
@@ -37,54 +40,44 @@ export default function Cart() {
               <div className="space-y-6">
                 <div className="space-y-6">
                   {cartItems.length > 0 ? (
-                    cartItems.map((item, index) => (
+                    cartItems.map((item) => (
                       <div
-                        key={index}
-                        className="product-card-page rounded-lg p-4 shadow-sm md:p-6"
+                        key={item.id}
+                        className={`product-card-page rounded-lg p-4 shadow-sm md:p-6 transition-all duration-300 mb-4 ${
+                          animatingIds.includes(item.id)
+                            ? 'opacity-0 transform translate-x-full'
+                            : 'opacity-100'
+                        }`}
                       >
                         <div className="product-text-cart space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                           <a href="#" className="w-20 shrink-0 md:order-1">
-                            <img
-                              className="h-20 w-20"
-                              src={item.image}
-                              alt={item.product}
-                            />
+                            <img className="h-20 w-20" src={item.image} alt={item.product} />
                           </a>
 
                           <div className="flex items-center justify-between md:order-3 md:justify-end">
                             <div className="flex items-center">
                               <ButtonSetQuality
-                                quantity={item.quantity || 1} // Đảm bảo quantity có giá trị mặc định
-                                setQuantity={(newQuantity) =>
-                                  updateQuantity(item.id, newQuantity)
-                                } // Cập nhật số lượng
+                                quantity={item.quantity}
+                                setQuantity={(newQuantity) => updateQuantity(item.id, newQuantity)}
                               />
                             </div>
                             <div className="text-end md:order-4 md:w-32">
                               <p className="text-lg font-bold">
-                                $
-                                {(
-                                  (item.price || 0) * (item.quantity || 1)
-                                ).toFixed(2)}{' '}
-                                {/* Cập nhật tổng tiền và đảm bảo không có giá trị NaN */}
+                                ${(item.totalPrice * item.quantity).toFixed(2)}
                               </p>
                             </div>
                           </div>
 
                           <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                            <a
-                              href="#"
-                              className="text-base font-medium hover:underline "
-                            >
-                              {item.product} {/* Product name */} - Size{' '}
-                              {item.size}
+                            <a href="#" className="text-base font-medium hover:underline ">
+                              {item.product} - Size {item.size}
                             </a>
 
                             <div className="flex items-center gap-4">
                               <button
                                 type="button"
                                 className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500"
-                                onClick={() => removeFromCart(item.id)} // Remove item from cart
+                                onClick={() => handleRemoveItem(item.id)}
                               >
                                 <svg
                                   className="me-1.5 h-5 w-5"
@@ -111,9 +104,7 @@ export default function Cart() {
                       </div>
                     ))
                   ) : (
-                    <p className="text-center text-gray-600">
-                      Your cart is empty.
-                    </p>
+                    <p className="text-center text-gray-600">Your cart is empty.</p>
                   )}
                 </div>
               </div>
@@ -217,34 +208,26 @@ export default function Cart() {
 
             <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
               <div className="product-card-page space-y-4 rounded-lg border p-4 shadow-lg sm:p-6">
-                <p className="text-data-cart text-xl font-semibold">
-                  Order summary
-                </p>
+                <p className="text-data-cart text-xl font-semibold">Order summary</p>
 
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <dl className="flex items-center justify-between gap-4">
-                      <dt className="text-data-cart text-base font-normal">
-                        Original price
-                      </dt>
+                      <dt className="text-data-cart text-base font-normal">Original price</dt>
                       <dd className="text-data-cart text-base font-medium">
                         ${originalPrice.toFixed(2)}
                       </dd>
                     </dl>
 
                     <dl className="flex items-center justify-between gap-4">
-                      <dt className="text-data-cart text-base font-normal">
-                        Savings
-                      </dt>
+                      <dt className="text-data-cart text-base font-normal">Savings</dt>
                       <dd className="text-base font-medium text-green-600">
                         -${savings.toFixed(2)}
                       </dd>
                     </dl>
 
                     <dl className="text-data-cart flex items-center justify-between gap-4">
-                      <dt className="text-data-cart text-base font-normal">
-                        Store Pickup
-                      </dt>
+                      <dt className="text-data-cart text-base font-normal">Store Pickup</dt>
                       <dd className="text-data-cart text-base font-medium">
                         {/* ${shippingCost.toFixed(2)} */}
                       </dd>
@@ -252,9 +235,7 @@ export default function Cart() {
                   </div>
 
                   <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-                    <dt className="text-data-cart text-base font-bold ">
-                      Total
-                    </dt>
+                    <dt className="text-data-cart text-base font-bold ">Total</dt>
                     <dd className="text-data-cart text-base font-bold">
                       ${(totalPrice + shippingCost).toFixed(2)}
                     </dd>
@@ -269,10 +250,7 @@ export default function Cart() {
                 </a>
 
                 <div className="flex items-center justify-center gap-2">
-                  <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                    {' '}
-                    or{' '}
-                  </span>
+                  <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
                   <a
                     href="#"
                     title=""
@@ -288,9 +266,9 @@ export default function Cart() {
                     >
                       <path
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M19 12H5m14 0-4 4m4-4-4-4"
                       />
                     </svg>
@@ -302,7 +280,7 @@ export default function Cart() {
                 <form className="space-y-4">
                   <div>
                     <label
-                      for="voucher"
+                      htmlFor="voucher"
                       className="text-data-cart mb-2 block text-sm font-medium "
                     >
                       {' '}
@@ -329,5 +307,5 @@ export default function Cart() {
         </div>
       </section>
     </div>
-  );
+  )
 }
