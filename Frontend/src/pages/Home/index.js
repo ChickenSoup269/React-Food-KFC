@@ -1,64 +1,59 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Navigation, /**Pagination**/ Thumbs } from 'swiper/modules'; // Add Thumbs module
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/thumbs';
+import React, { useState, useRef, useEffect } from 'react'
+import { Navigation, /**Pagination**/ Thumbs } from 'swiper/modules' // Add Thumbs module
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/thumbs'
 
-import clsx from 'clsx';
-import styles from './home.scss';
-import products from '~/components/Products/products';
-import ProductCard from '~/components/Products';
-import CategoryButton from '~/components/Button/categoryButton';
-
-const cx = clsx.bind(styles);
+import './home.scss'
+import products from '~/components/Products/products'
+import ProductCard from '~/components/Products'
+import CategoryButton from '~/components/Button/categoryButton'
 
 export default function Home() {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null); // State to hold thumbnail Swiper instance
-  const [activeCategory, setActiveCategory] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null) // State to hold thumbnail Swiper instance
+  const [activeCategory, setActiveCategory] = useState(null)
   // Function to handle scroll event
   const handleScroll = () => {
-    const scrollY = window.scrollY;
+    const scrollY = window.scrollY
 
-    Array.from(new Set(products.map((product) => product.category))).forEach(
-      (category) => {
-        const categoryElement = categoryRefs.current[category];
-        const categoryTop = categoryElement.offsetTop;
-        const categoryHeight = categoryElement.offsetHeight;
+    Array.from(new Set(products.map((product) => product.category))).forEach((category) => {
+      const categoryElement = categoryRefs.current[category]
+      const categoryTop = categoryElement.offsetTop
+      const categoryHeight = categoryElement.offsetHeight
 
-        // Check if the scroll position is within the category section
-        if (scrollY >= categoryTop && scrollY < categoryTop + categoryHeight) {
-          setActiveCategory(category);
-        }
+      // Check if the scroll position is within the category section
+      if (scrollY >= categoryTop && scrollY < categoryTop + categoryHeight) {
+        setActiveCategory(category)
       }
-    );
-  };
+    })
+  }
 
   // Add scroll event listener
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   // Sample images for the slider
   const images = [
     'https://foodology.ca/wp-content/uploads/2024/04/KFC_MarketTest-Slider-Fill-Up-Box-CC_V3-r01.png',
     'https://static.kfcvietnam.com.vn/images/web/our-story/lg/our-story.jpg?v=gORrX4',
-    'https://kfcbd.com/storage/sliders/3O7FUTPmx48qTxhyRNNn6Uo8V.jpg',
+    'https://static.kfcvietnam.com.vn/images/content/home/carousel/lg/ComboMaGe.webp?v=4B5EvL',
     'https://brand-uk.assets.kfc.co.uk/2024-09/W7_CAROUSEL_DELIVERYDEAL_2TWISTER_2FRIES_UK_2000x650px.jpg?VersionId=0mmPoRRt9ClJ377_i0DIORivQy.O7rPV',
-  ];
+  ]
 
-  const categoryRefs = useRef({});
+  const categoryRefs = useRef({})
 
   // Function to scroll to the respective category section
   const scrollToSection = (category) => {
     if (categoryRefs.current[category]) {
-      categoryRefs.current[category].scrollIntoView({ behavior: 'smooth' });
+      categoryRefs.current[category].scrollIntoView({ behavior: 'smooth' })
     }
-  };
+  }
 
   return (
     <div className="wrapper-home mt-5">
@@ -70,8 +65,7 @@ export default function Home() {
           navigation
           pagination={{ clickable: true }}
           thumbs={{
-            swiper:
-              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+            swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
           modules={[Navigation /**Pagination**/, Thumbs]}
           className="swiper-container mb-4"
@@ -127,9 +121,7 @@ export default function Home() {
         {/* Buttons to scroll to respective categories */}
         <div className="sticky custom-background flex top-16 z-10 py-2 justify-center w-full">
           <div className="button-container flex space-x-2 mb-1">
-            {Array.from(
-              new Set(products.map((product) => product.category))
-            ).map((category) => (
+            {Array.from(new Set(products.map((product) => product.category))).map((category) => (
               <CategoryButton
                 key={category}
                 category={category}
@@ -141,35 +133,27 @@ export default function Home() {
         </div>
 
         {/* Product Sections hiển thị sản phẩm */}
-        {Array.from(new Set(products.map((product) => product.category))).map(
-          (category) => (
-            <div
-              key={category}
-              ref={(el) => (categoryRefs.current[category] = el)}
-              className="mt-12"
+        {Array.from(new Set(products.map((product) => product.category))).map((category) => (
+          <div key={category} ref={(el) => (categoryRefs.current[category] = el)} className="mt-12">
+            <h1 className="product-title text-4xl font-bold mb-5 uppercase">{category}</h1>
+            <Swiper
+              spaceBetween={5}
+              slidesPerView={4} // Adjust the number of slides as needed
+              navigation
+              pagination={{ clickable: true }}
+              modules={[Navigation]}
+              className="swiper-container-products"
             >
-              <h1 className="product-title text-4xl font-bold mb-5 uppercase">
-                {category}
-              </h1>
-              <Swiper
-                spaceBetween={5}
-                slidesPerView={4} // Adjust the number of slides as needed
-                navigation
-                pagination={{ clickable: true }}
-                modules={[Navigation]}
-                className="swiper-container-products"
-              >
-                {products
-                  .filter((product) => product.category === category)
-                  .map((product, index) => (
-                    <SwiperSlide key={index}>
-                      <ProductCard product={product} />
-                    </SwiperSlide>
-                  ))}
-              </Swiper>
-            </div>
-          )
-        )}
+              {products
+                .filter((product) => product.category === category)
+                .map((product, index) => (
+                  <SwiperSlide key={index}>
+                    <ProductCard product={product} />
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+          </div>
+        ))}
       </div>
       {/* about Kfc sesction */}
       <section className="py-24 relative">
@@ -215,9 +199,8 @@ export default function Home() {
                     KFC Historical Archives
                   </h2>
                   <p className="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
-                    The Colonel is the most iconic symbol we have. We proudly
-                    display him as our symbol for all things Always Original,
-                    all the time.
+                    The Colonel is the most iconic symbol we have. We proudly display him as our
+                    symbol for all things Always Original, all the time.
                   </p>
                 </div>
                 <div className="w-full lg:justify-start justify-center items-center sm:gap-10 gap-5 inline-flex">
@@ -248,14 +231,12 @@ export default function Home() {
                 </div>
               </div>
               <button className="about-kfc-bottom-btn sm:w-fit w-full px-3.5 py-2 transition-all duration-700 ease-in-out rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] justify-center items-center flex">
-                <span className="px-1.5 text-white text-sm font-medium leading-6">
-                  Read More
-                </span>
+                <span className="px-1.5 text-white text-sm font-medium leading-6">Read More</span>
               </button>
             </div>
           </div>
         </div>
       </section>
     </div>
-  );
+  )
 }
