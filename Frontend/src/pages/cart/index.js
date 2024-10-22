@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import styles from './cart.scss'
 import { useCart } from '~/components/AddCard/CartContext'
 import { ButtonSetQuality } from '~/components/Button'
+import routes from '~/routes/routes'
 
 const cx = clsx.bind(styles)
 
@@ -12,13 +13,18 @@ export default function Cart() {
     useCart()
   const [animatingIds, setAnimatingIds] = useState([])
 
+  // Calculate total original price from cart items
   const originalPrice = cartItems.reduce(
     (total, item) => total + item.totalPrice * item.quantity,
     0
   )
+
   const totalPrice = calculateTotalPrice()
   const savings = calculateSavings()
-  const shippingCost = 1
+  const shippingCost = 0 // Assuming flat shipping cost
+
+  // Calculate the total quantity of items in the cart
+  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0)
 
   const handleRemoveItem = (itemId) => {
     setAnimatingIds((prev) => [...prev, itemId])
@@ -27,6 +33,7 @@ export default function Cart() {
       setAnimatingIds((prev) => prev.filter((id) => id !== itemId))
     }, 300)
   }
+
   return (
     <div className={cx('wrapper-cart')}>
       <section className="py-8 antialiased md:py-16">
@@ -227,9 +234,10 @@ export default function Cart() {
                     </dl>
 
                     <dl className="text-data-cart flex items-center justify-between gap-4">
-                      <dt className="text-data-cart text-base font-normal">Store Pickup</dt>
+                      <dt className="text-data-cart text-base font-normal">Total quality</dt>
                       <dd className="text-data-cart text-base font-medium">
                         {/* ${shippingCost.toFixed(2)} */}
+                        {totalQuantity}
                       </dd>
                     </dl>
                   </div>
@@ -244,7 +252,7 @@ export default function Cart() {
 
                 <a
                   href="#"
-                  className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="text-data-cart flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Proceed to Checkout
                 </a>
@@ -252,9 +260,9 @@ export default function Cart() {
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
                   <a
-                    href="#"
+                    href={routes.home}
                     title=""
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500"
+                    className="text-data-cart inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500"
                   >
                     Continue Shopping
                     <svg

@@ -1,5 +1,5 @@
-import React from 'react';
-import './search.scss';
+import React from 'react'
+import './search.scss'
 
 export default function SearchPage() {
   return (
@@ -29,5 +29,5 @@ export default function SearchPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,61 +1,52 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
+import React from 'react'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import styles from './button.scss'
 
-import styles from './button.scss';
+const cx = clsx.bind(styles)
 
-const cx = clsx.bind(styles);
-
-function ButtonSecondary({ onClick, text }) {
+function ButtonSecondary({ onClick }) {
   return (
     <div className={cx('wrapper-button-secondary')}>
-      <button
-        className="btn-add-cart w-full mt-4 py-2 px-3 capitalize rounded"
-        onClick={onClick}
-      >
+      <button className="btn-add-cart w-full mt-4 py-2 px-3 capitalize rounded" onClick={onClick}>
         Add to Cart
       </button>
     </div>
-  );
+  )
 }
 
 function ButtonPrimary({ onClick, text }) {
   return (
     <div className={cx('wrapper-button-secondary')}>
-      <button
-        className="btn-primary w-full mt-4 py-2 px-3 capitalize rounded"
-        onClick={onClick}
-      >
+      <button className="btn-primary w-full mt-4 py-2 px-3 capitalize rounded" onClick={onClick}>
         {text}
       </button>
     </div>
-  );
+  )
 }
 
 function ButtonExit({ onClick, text }) {
   return (
     <div className={cx('wrapper-button-secondary')}>
-      <button
-        className="btn-exit w-full mt-4 py-2 px-3 capitalize rounded"
-        onClick={onClick}
-      >
+      <button className="btn-exit w-full mt-4 py-2 px-3 capitalize rounded" onClick={onClick}>
         {text}
       </button>
     </div>
-  );
+  )
 }
 
 function ButtonSetQuality({ quantity, setQuantity }) {
   const incrementQuantity = () => {
     if (quantity < 99) {
-      setQuantity(quantity + 1); // Cập nhật số lượng trực tiếp
+      setQuantity(quantity + 1)
     }
-  };
+  }
 
   const decrementQuantity = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1); // Giảm số lượng
+      setQuantity(quantity - 1)
     }
-  };
+  }
 
   return (
     <div className="wrapper-button-set-quality">
@@ -83,12 +74,7 @@ function ButtonSetQuality({ quantity, setQuantity }) {
           </svg>
         </button>
 
-        <input
-          type="text"
-          value={quantity}
-          readOnly
-          className="w-10 text-center bg-transparent"
-        />
+        <input type="text" value={quantity} readOnly className="w-10 text-center bg-transparent" />
 
         <button
           type="button"
@@ -112,7 +98,27 @@ function ButtonSetQuality({ quantity, setQuantity }) {
         </button>
       </div>
     </div>
-  );
+  )
 }
 
-export { ButtonSecondary, ButtonPrimary, ButtonExit, ButtonSetQuality };
+// ProTypes
+
+ButtonSecondary.propTypes = {
+  onClick: PropTypes.func.isRequired, // Đảm bảo cung cấp như một function
+}
+ButtonPrimary.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+}
+
+ButtonExit.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+}
+
+ButtonSetQuality.propTypes = {
+  quantity: PropTypes.number.isRequired,
+  setQuantity: PropTypes.func.isRequired,
+}
+
+export { ButtonSecondary, ButtonPrimary, ButtonExit, ButtonSetQuality }

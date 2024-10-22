@@ -35,8 +35,7 @@ const products = [
   },
   {
     id: 4,
-    image:
-      'https://www.kfc-suisse.ch/fileadmin/media/images/Produkte/Veggie/veggie-kids.png',
+    image: 'https://www.kfc-suisse.ch/fileadmin/media/images/Produkte/Veggie/veggie-kids.png',
     name: 'Veggie Kids Menu',
     description: 'Special offer on Veggie Kids Menu',
     price: '19.99',
@@ -57,8 +56,7 @@ const products = [
   },
   {
     id: 6,
-    image:
-      'https://www.kfc-suisse.ch/fileadmin/media/images/Produkte/Kids/thumb_kids.png',
+    image: 'https://www.kfc-suisse.ch/fileadmin/media/images/Produkte/Kids/thumb_kids.png',
     name: 'Kid Menu',
     description: 'Special offer on Kid Menu',
     price: '19.99',
@@ -113,8 +111,7 @@ const products = [
   },
   {
     id: 11,
-    image:
-      'https://www.kfc-suisse.ch/fileadmin/_processed_/b/f/csm_bbq-zinger_f6d44fda63.png',
+    image: 'https://www.kfc-suisse.ch/fileadmin/_processed_/b/f/csm_bbq-zinger_f6d44fda63.png',
     name: 'Kentucky BBQ Zinger Burger',
     description: 'Twist of flavor in every bite.',
     price: '39.99',
@@ -124,8 +121,7 @@ const products = [
   },
   {
     id: 12,
-    image:
-      'https://www.kfc-suisse.ch/fileadmin/_processed_/c/7/csm_classic-zinger_657ed2d4ee.png',
+    image: 'https://www.kfc-suisse.ch/fileadmin/_processed_/c/7/csm_classic-zinger_657ed2d4ee.png',
     name: 'Classic Zinger Burger',
     description: 'Twist of flavor in every bite.',
     price: '39.99',
@@ -317,8 +313,7 @@ const products = [
   },
   {
     id: 34,
-    image:
-      'https://www.kfc-suisse.ch/fileadmin/_processed_/c/6/csm_dip-original_9ef5691e72.png',
+    image: 'https://www.kfc-suisse.ch/fileadmin/_processed_/c/6/csm_dip-original_9ef5691e72.png',
     name: 'Original Dip',
     description: 'Twist of flavor in every bite.',
     price: '0.99',
@@ -328,8 +323,7 @@ const products = [
   },
   {
     id: 35,
-    image:
-      'https://www.kfc-suisse.ch/fileadmin/_processed_/2/e/csm_dip-garlicsauce_749dc8c793.png',
+    image: 'https://www.kfc-suisse.ch/fileadmin/_processed_/2/e/csm_dip-garlicsauce_749dc8c793.png',
     name: 'Garlic Sauce Dip',
     description: 'Twist of flavor in every bite.',
     price: '0.99',
@@ -339,8 +333,7 @@ const products = [
   },
   {
     id: 36,
-    image:
-      'https://www.kfc-suisse.ch/fileadmin/_processed_/d/7/csm_dip-sweetsour_c122c60636.png',
+    image: 'https://www.kfc-suisse.ch/fileadmin/_processed_/d/7/csm_dip-sweetsour_c122c60636.png',
     name: 'Sweet & Sour Dip',
     description: 'Twist of flavor in every bite.',
     price: '0.99',
@@ -350,8 +343,7 @@ const products = [
   },
   {
     id: 37,
-    image:
-      'https://www.kfc-suisse.ch/fileadmin/_processed_/1/d/csm_dip-smookybbq_e9d2db47b0.png',
+    image: 'https://www.kfc-suisse.ch/fileadmin/_processed_/1/d/csm_dip-smookybbq_e9d2db47b0.png',
     name: 'Smoky BBQ Dip',
     description: 'Twist of flavor in every bite.',
     price: '0.99',
@@ -361,8 +353,7 @@ const products = [
   },
   {
     id: 38,
-    image:
-      'https://www.kfc-suisse.ch/fileadmin/_processed_/b/8/csm_dip-spicycreamy_52ad374d61.png',
+    image: 'https://www.kfc-suisse.ch/fileadmin/_processed_/b/8/csm_dip-spicycreamy_52ad374d61.png',
     name: 'Spicy Creamy Dip',
     description: 'Twist of flavor in every bite.',
     price: '0.99',
@@ -372,8 +363,7 @@ const products = [
   },
   {
     id: 39,
-    image:
-      'https://www.kfc-suisse.ch/fileadmin/_processed_/9/c/csm_dip-creamycurry_7cc17b14c0.png',
+    image: 'https://www.kfc-suisse.ch/fileadmin/_processed_/9/c/csm_dip-creamycurry_7cc17b14c0.png',
     name: 'Creamy Curry Dip',
     description: 'Twist of flavor in every bite.',
     price: '0.99',
@@ -515,6 +505,6 @@ const products = [
     size: ['m'],
     discount: 0,
   },
-];
+]
 
-export default products;
+export default products

@@ -106,13 +106,7 @@
   background-color: #28a745; /* Green background for the discount */
   color: white;
   padding: 8px 24px;
-  clip-path: polygon(
-    100% 0,
-    80% 50%,
-    100% 100%,
-    0 100%,
-    0 0
-  ); /* Retains the shape */
+  clip-path: polygon(100% 0, 80% 50%, 100% 100%, 0 100%, 0 0); /* Retains the shape */
   font-size: 0.875rem;
   font-weight: bold;
   position: absolute;
@@ -151,4 +145,30 @@
     background-color: var(--primary-color);
     color: black;
   }
+}
+
+// navigation
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: var(--activeText);
+  padding: 16px 16px;
+  border-radius: var(--border);
+  color: var(--activeSwitch);
+  transition: calc(0.4s);
+
+  &:hover {
+    transition: calc(0.2s);
+    background-color: var(--activeProductCard);
+    color: var(--activeText);
+    box-shadow: var(--boxShadow);
+  }
+
+  &:active {
+    background-color: #c5c5c5;
+  }
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-weight: 700;
+  font-size: 1.8rem;
 }

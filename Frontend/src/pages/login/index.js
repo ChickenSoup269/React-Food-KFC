@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import logo from '~/assets/images/logo2.png';
-import { useLanguage } from '~/components/Translate/LanguageContext';
-import translations from '~/components/Translate/translations';
-import routes from '~/routes/routes';
+import logo from '~/assets/images/logo2.png'
+import { useLanguage } from '~/components/Translate/LanguageContext'
+import translations from '~/components/Translate/translations'
+import routes from '~/routes/routes'
 
-import styles from './login.scss';
-import clsx from 'clsx';
+import styles from './login.scss'
+import clsx from 'clsx'
 
-const cx = clsx.bind(styles);
+const cx = clsx.bind(styles)
 
 export default function Login() {
-  const { language } = useLanguage();
+  const { language } = useLanguage()
   return (
     <div className={cx('wrapper-login')}>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -72,18 +72,12 @@ export default function Login() {
                     />
                   </div>
                   <div className="ml-3 text-sm">
-                    <label
-                      for="remember"
-                      className="text-gray-500 dark:text-gray-300"
-                    >
+                    <label for="remember" className="text-gray-500 dark:text-gray-300">
                       {translations[language].rememberMe}
                     </label>
                   </div>
                 </div>
-                <a
-                  href={routes.recoveryPass}
-                  className="forgot-password-text text-sm font-medium"
-                >
+                <a href={routes.recoveryPass} className="forgot-password-text text-sm font-medium">
                   {translations[language].forgotPassword}
                 </a>
               </div>
@@ -95,10 +89,7 @@ export default function Login() {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{' '}
-                <a
-                  href={routes.register}
-                  className="font-medium hover:underline"
-                >
+                <a href={routes.register} className="font-medium hover:underline">
                   Sign up
                 </a>
               </p>
@@ -107,5 +98,5 @@ export default function Login() {
         </div>
       </div>
     </div>
-  );
+  )
 }

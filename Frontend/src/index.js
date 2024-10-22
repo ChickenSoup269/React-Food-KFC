@@ -1,11 +1,11 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from '~/App';
-import './index.css';
-import { LanguageProvider } from './components/Translate/LanguageContext';
-import { CartProvider } from './components/AddCard/CartContext';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import App from '~/App'
+import './index.css'
+import { LanguageProvider } from './components/Translate/LanguageContext'
+import { CartProvider } from './components/AddCard/CartContext'
 
-const root = createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <CartProvider>
@@ -14,4 +14,4 @@ root.render(
       </LanguageProvider>
     </CartProvider>
   </React.StrictMode>
-);
+)

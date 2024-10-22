@@ -1,48 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import clsx from 'clsx';
-import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from 'react'
+import clsx from 'clsx'
+import { NavLink } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
-import styles from './header.scss';
-import routes from '~/routes/routes.js';
-import logoImage2 from '~/assets/images/logo2.png';
-import { useLanguage } from '~/components/Translate/LanguageContext';
-import ThemeLightDark from '~/components/Theme';
-import Translate from '~/components/Translate';
-import translations from '~/components/Translate/translations';
+import styles from './header.scss'
+import routes from '~/routes/routes.js'
+import logoImage2 from '~/assets/images/logo2.png'
+import { useLanguage } from '~/components/Translate/LanguageContext'
+import ThemeLightDark from '~/components/Theme'
+import Translate from '~/components/Translate'
+import translations from '~/components/Translate/translations'
+import { useCart } from '~/components/AddCard/CartContext'
 
-const cx = clsx.bind(styles);
+const cx = clsx.bind(styles)
 
 export default function Header() {
-  const { language } = useLanguage();
-
-  // State to manage background color and fix position based on scroll
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { language } = useLanguage()
+  const { cartItems } = useCart() // Get cart items from the context
+  const [itemCount, setItemCount] = useState(0) // State to track cart items
+  const [isScrolled, setIsScrolled] = useState(false) // State to manage background color and fix position based on scroll
+  const [, /*animating*/ setAnimating] = useState(false)
 
   // Function to detect scrolling
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+      setIsScrolled(window.scrollY > 10)
+    }
 
-    window.addEventListener('scroll', handleScroll);
-
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  // Update unique product count whenever cart items change
+  useEffect(() => {
+    // Count unique products in the cart
+    const uniqueProducts = new Set(cartItems.map((item) => item.id))
+    const totalUniqueProducts = uniqueProducts.size
+    setItemCount(totalUniqueProducts)
+
+    // Trigger animation when item count changes
+    if (totalUniqueProducts > 0) {
+      setAnimating(true)
+      const timer = setTimeout(() => setAnimating(false), 300) // Adjust the timeout based on your animation duration
+      return () => clearTimeout(timer)
+    }
+  }, [cartItems])
+
+  const addToCart = () => {
+    // Handle the add to cart logic here, if needed
+  }
 
   const navItems = [
     { route: routes.home, translation: translations[language].home },
     { route: routes.menuPage, translation: translations[language].menu },
     { route: routes.search, translation: translations[language].search },
     { route: routes.settings, translation: translations[language].contact },
-  ];
+  ]
 
   return (
     <header
@@ -51,19 +67,13 @@ export default function Header() {
         isScrolled ? 'fixed top-0 start-0 shadow-lg' : 'relative z-10 shadow-lg'
       )}
       style={{
-        backgroundColor: isScrolled
-          ? 'var(--activeBg)'
-          : 'var(--secondary-color)',
+        backgroundColor: isScrolled ? 'var(--activeBg)' : 'var(--secondary-color)',
         color: isScrolled ? 'var(--activeText)' : 'white', // Text color ch
-        transition:
-          'background-color 0.5s, padding 0.5s, box-shadow 0.5s, color 0.5s', // Ensure the color transition is smooth
+        transition: 'background-color 0.5s, padding 0.5s, box-shadow 0.5s, color 0.5s', // Ensure the color transition is smooth
       }}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
-        <a
-          href={routes.home}
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
+        <a href={routes.home} className="flex items-center space-x-3 rtl:space-x-reverse">
           <div className={cx('wrapper-logo')}>
             <img
               src={logoImage2}
@@ -85,12 +95,14 @@ export default function Header() {
 
           <Translate />
 
-          <a href={routes.cart}>
-            <FontAwesomeIcon
-              icon={faShoppingCart}
-              className="icon-shopping-cart"
-            />
-          </a>
+          <div className="cart-icon-container" onClick={addToCart}>
+            <a href={routes.cart}>
+              <div className={`icon-wrapper ${itemCount > 0 ? 'animate' : ''}`}>
+                <FontAwesomeIcon icon={faShoppingCart} className="icon-shopping-cart" />
+                {itemCount > 0 && <span className="item-count">{itemCount}</span>}
+              </div>
+            </a>
+          </div>
 
           {/* button login */}
           <a href={routes.login}>
@@ -143,9 +155,7 @@ export default function Header() {
               <li key={item.route}>
                 <NavLink
                   to={item.route}
-                  className={({ isActive }) =>
-                    isActive ? 'nav-li actives' : 'nav-li'
-                  }
+                  className={({ isActive }) => (isActive ? 'nav-li actives' : 'nav-li')}
                 >
                   {item.translation}
                 </NavLink>
@@ -155,5 +165,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }

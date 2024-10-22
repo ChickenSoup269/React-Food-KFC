@@ -9,6 +9,6 @@ const routes = {
   search: '/search',
   menuPage: '/menu',
   cart: '/cart',
-};
+}
 
-export default routes;
+export default routes

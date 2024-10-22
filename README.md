@@ -66,7 +66,7 @@
 - **Chạy Prettier để định dạng mã nguồn:**
 
   ```bash
-  npm run format [bug]
+  npm run format
   ```
 
 ## Screenshots

@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import logo from '~/assets/images/logo2.png';
-import { useLanguage } from '~/components/Translate/LanguageContext';
-import translations from '~/components/Translate/translations';
-import routes from '~/routes/routes';
+import logo from '~/assets/images/logo2.png'
+import { useLanguage } from '~/components/Translate/LanguageContext'
+import translations from '~/components/Translate/translations'
+import routes from '~/routes/routes'
 
-import styles from './register.scss';
-import clsx from 'clsx';
+import styles from './register.scss'
+import clsx from 'clsx'
 
-const cx = clsx.bind(styles);
+const cx = clsx.bind(styles)
 
 export default function Register() {
-  const { language } = useLanguage();
+  const { language } = useLanguage()
   return (
     <div className={cx('wrapper-sign-up')}>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -95,5 +95,5 @@ export default function Register() {
         </div>
       </div>
     </div>
-  );
+  )
 }

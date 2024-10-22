@@ -28,6 +28,6 @@ const translations = {
     confirmPassword: 'Nhập lại mật khẩu',
     signUpTitle: 'Đăng Ký Tài Khoản',
   },
-};
+}
 
-export default translations;
+export default translations

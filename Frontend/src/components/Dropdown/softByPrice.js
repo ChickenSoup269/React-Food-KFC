@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 export default function SoftByPrice({ selectedSort, onSortChange }) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   // Hàm để toggle dropdown
   const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
+    setIsDropdownOpen((prev) => !prev)
+  }
 
   // Hàm xử lý chọn sắp xếp
   const handleSortChange = (order) => {
-    onSortChange(order); // Gọi hàm từ props để thông báo về lựa chọn mới
-    setIsDropdownOpen(false); // Đóng dropdown
-  };
+    onSortChange(order) // Gọi hàm từ props để thông báo về lựa chọn mới
+    setIsDropdownOpen(false) // Đóng dropdown
+  }
 
   return (
     <div className="wrapper-soft-by-price">
@@ -76,5 +77,12 @@ export default function SoftByPrice({ selectedSort, onSortChange }) {
         )}
       </div>
     </div>
-  );
+  )
+}
+
+// ProTypes
+
+SoftByPrice.propTypes = {
+  selectedSort: PropTypes.string.isRequired,
+  onSortChange: PropTypes.func.isRequired,
 }

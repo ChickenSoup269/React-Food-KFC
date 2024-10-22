@@ -1,17 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 export default function OrderSummary({ originalPrice, discount, pickupFee }) {
   // Tính toán giá trị sau khi giảm giá
-  const discountAmount = discount
-    ? (originalPrice * (discount / 100)).toFixed(2)
-    : 0;
-  const totalPrice = (originalPrice - discountAmount + pickupFee).toFixed(2);
+  const discountAmount = discount ? (originalPrice * (discount / 100)).toFixed(2) : 0
+  const totalPrice = (originalPrice - discountAmount + pickupFee).toFixed(2)
 
   return (
     <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-      <p className="text-xl font-semibold text-gray-900 dark:text-white">
-        Order summary
-      </p>
+      <p className="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
 
       <div className="space-y-4">
         <div className="space-y-2">
@@ -29,16 +25,12 @@ export default function OrderSummary({ originalPrice, discount, pickupFee }) {
               <dt className="text-base font-normal text-gray-500 dark:text-gray-400">
                 Savings ({discount}% off)
               </dt>
-              <dd className="text-base font-medium text-green-600">
-                -${discountAmount}
-              </dd>
+              <dd className="text-base font-medium text-green-600">-${discountAmount}</dd>
             </dl>
           )}
 
           <dl className="flex items-center justify-between gap-4">
-            <dt className="text-base font-normal text-gray-500 dark:text-gray-400">
-              Store Pickup
-            </dt>
+            <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Store Pickup</dt>
             <dd className="text-base font-medium text-gray-900 dark:text-white">
               ${pickupFee.toFixed(2)}
             </dd>
@@ -46,12 +38,8 @@ export default function OrderSummary({ originalPrice, discount, pickupFee }) {
         </div>
 
         <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-          <dt className="text-base font-bold text-gray-900 dark:text-white">
-            Total
-          </dt>
-          <dd className="text-base font-bold text-gray-900 dark:text-white">
-            ${totalPrice}
-          </dd>
+          <dt className="text-base font-bold text-gray-900 dark:text-white">Total</dt>
+          <dd className="text-base font-bold text-gray-900 dark:text-white">${totalPrice}</dd>
         </dl>
       </div>
 
@@ -63,10 +51,7 @@ export default function OrderSummary({ originalPrice, discount, pickupFee }) {
       </a>
 
       <div className="flex items-center justify-center gap-2">
-        <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-          {' '}
-          or{' '}
-        </span>
+        <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
         <a
           href="#"
           title=""
@@ -91,5 +76,5 @@ export default function OrderSummary({ originalPrice, discount, pickupFee }) {
         </a>
       </div>
     </div>
-  );
+  )
 }

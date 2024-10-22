@@ -138,11 +138,33 @@ export default function Home() {
             <h1 className="product-title text-4xl font-bold mb-5 uppercase">{category}</h1>
             <Swiper
               spaceBetween={5}
-              slidesPerView={4} // Adjust the number of slides as needed
+              slidesPerView={4} // Default number of slides per view
               navigation
               pagination={{ clickable: true }}
               modules={[Navigation]}
               className="swiper-container-products"
+              breakpoints={{
+                // When the window width is >= 640px
+                640: {
+                  slidesPerView: 1, // Show 1 slide
+                  spaceBetween: 10,
+                },
+                // When the window width is >= 768px
+                768: {
+                  slidesPerView: 2, // Show 2 slides
+                  spaceBetween: 15,
+                },
+                // When the window width is >= 1024px
+                1024: {
+                  slidesPerView: 3, // Show 3 slides
+                  spaceBetween: 20,
+                },
+                // When the window width is >= 1280px
+                1280: {
+                  slidesPerView: 4, // Show 4 slides (default)
+                  spaceBetween: 10,
+                },
+              }}
             >
               {products
                 .filter((product) => product.category === category)

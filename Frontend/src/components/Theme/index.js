@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import './theme.scss';
+import React, { useEffect, useState } from 'react'
+import './theme.scss'
 
 export default function ThemeLightDark() {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   // theme light/dark
   const handleThemeChange = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-  };
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(newTheme)
+  }
 
   return (
     <input
@@ -22,5 +22,5 @@ export default function ThemeLightDark() {
       checked={theme === 'light'}
       onChange={handleThemeChange}
     />
-  );
+  )
 }

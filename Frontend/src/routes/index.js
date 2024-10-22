@@ -1,10 +1,10 @@
-import Home from '~/pages/home';
-import Login from '~/pages/login';
-import Register from '~/pages/register';
-import RecoveryPassword from '~/pages/recovery-pass';
-import SearchPage from '~/pages/search';
-import MenuPage from '~/pages/menu';
-import Cart from '~/pages/cart';
+import Home from '~/pages/home'
+import Login from '~/pages/login'
+import Register from '~/pages/register'
+import RecoveryPassword from '~/pages/recovery-pass'
+import SearchPage from '~/pages/search'
+import MenuPage from '~/pages/menu'
+import Cart from '~/pages/cart'
 
 const publicRoutes = [
   {
@@ -35,6 +35,6 @@ const publicRoutes = [
     path: '/cart',
     component: Cart,
   },
-];
+]
 
-export default publicRoutes;
+export default publicRoutes

@@ -1,102 +1,98 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
-import styles from './menu.scss';
-import products from '~/components/Products/products';
-import ProductCard from '~/components/Products';
-import CategoryButton from '~/components/Button/categoryButton';
-import SoftByPrice from '~/components/Dropdown/softByPrice';
+import React, { useState } from 'react'
+import clsx from 'clsx'
+import styles from './menu.scss'
+import products from '~/components/Products/products'
+import ProductCard from '~/components/Products'
+import CategoryButton from '~/components/Button/categoryButton'
+import SoftByPrice from '~/components/Dropdown/softByPrice'
 
-const cx = clsx.bind(styles);
+const cx = clsx.bind(styles)
 
 export default function MenuPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState(products);
-  const [activeCategory, setActiveCategory] = useState(null);
-  const [sortOrder, setSortOrder] = useState('default');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedSort, setSelectedSort] = useState('Sort by price'); // Trạng thái cho tên đã chọn
+  const [searchQuery, setSearchQuery] = useState('')
+  const [filteredProducts, setFilteredProducts] = useState(products)
+  const [activeCategory, setActiveCategory] = useState(null)
+  const [sortOrder, setSortOrder] = useState('default')
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [selectedSort, setSelectedSort] = useState('Sort by price') // Trạng thái cho tên đã chọn
 
   // Hàm xử lý khi thay đổi nội dung tìm kiếm
   const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+    setSearchQuery(event.target.value)
+  }
 
   // Hàm xử lý khi submit form tìm kiếm
   const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    filterProducts(searchQuery, activeCategory);
-  };
+    event.preventDefault()
+    filterProducts(searchQuery, activeCategory)
+  }
 
   // Hàm xử lý khi chọn danh mục
   const handleCategoryClick = (category) => {
-    setActiveCategory(category);
-    filterProducts(searchQuery, category);
-  };
+    setActiveCategory(category)
+    filterProducts(searchQuery, category)
+  }
 
   // Hàm lọc sản phẩm
   const filterProducts = (query, category) => {
-    const lowercasedQuery = query.toLowerCase();
+    const lowercasedQuery = query.toLowerCase()
     const filtered = products.filter((product) => {
-      const matchesCategory = !category || product.category === category;
-      const matchesQuery = product.name.toLowerCase().includes(lowercasedQuery);
-      return matchesCategory && matchesQuery;
-    });
+      const matchesCategory = !category || product.category === category
+      const matchesQuery = product.name.toLowerCase().includes(lowercasedQuery)
+      return matchesCategory && matchesQuery
+    })
 
-    setFilteredProducts(filtered);
+    setFilteredProducts(filtered)
 
     if (sortOrder !== 'default') {
-      sortProducts(filtered);
+      sortProducts(filtered)
     }
-  };
+  }
 
   // Hàm xử lý sắp xếp sản phẩm
   const handleSortChange = (order) => {
-    setSortOrder(order);
-    let sortText = '';
+    setSortOrder(order)
+    let sortText = ''
 
     if (order === 'priceAsc') {
-      sortText = 'Low to High';
+      sortText = 'Low to High'
     } else if (order === 'priceDesc') {
-      sortText = 'High to Low';
+      sortText = 'High to Low'
     } else if (order === 'sale') {
-      sortText = 'Sort by Sale';
+      sortText = 'Sort by Sale'
     }
 
-    setSelectedSort(sortText);
-    sortProducts(filteredProducts, order);
-    setIsDropdownOpen(false); // Đóng dropdown sau khi chọn
-  };
+    setSelectedSort(sortText)
+    sortProducts(filteredProducts, order)
+    setIsDropdownOpen(false) // Đóng dropdown sau khi chọn
+  }
 
   // Hàm sắp xếp sản phẩm
   const sortProducts = (productsToSort, order) => {
-    let sortedProducts = [...productsToSort];
+    let sortedProducts = [...productsToSort]
 
     switch (order) {
       case 'priceAsc':
-        sortedProducts.sort(
-          (a, b) => parseFloat(a.price) - parseFloat(b.price)
-        );
-        break;
+        sortedProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+        break
       case 'priceDesc':
-        sortedProducts.sort(
-          (a, b) => parseFloat(b.price) - parseFloat(a.price)
-        );
-        break;
+        sortedProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+        break
       case 'sale':
         // Sắp xếp theo discount (giảm giá) nếu có
-        sortedProducts.sort((a, b) => b.discount - a.discount);
-        break;
+        sortedProducts.sort((a, b) => b.discount - a.discount)
+        break
       default:
-        break;
+        break
     }
 
-    setFilteredProducts(sortedProducts);
-  };
+    setFilteredProducts(sortedProducts)
+  }
 
   // Hàm để toggle dropdown
   const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
+    setIsDropdownOpen((prev) => !prev)
+  }
 
   return (
     <div className={cx('wrapper-menu-page')}>
@@ -143,9 +139,7 @@ export default function MenuPage() {
               activeCategory={activeCategory}
               onClick={() => handleCategoryClick(null)}
             />
-            {Array.from(
-              new Set(products.map((product) => product.category))
-            ).map((category) => (
+            {Array.from(new Set(products.map((product) => product.category))).map((category) => (
               <CategoryButton
                 key={category}
                 category={category}
@@ -157,10 +151,7 @@ export default function MenuPage() {
         </div>
 
         <div className="flex justify-end">
-          <SoftByPrice
-            selectedSort={selectedSort}
-            onSortChange={handleSortChange}
-          />
+          <SoftByPrice selectedSort={selectedSort} onSortChange={handleSortChange} />
         </div>
 
         {/* Phần hiển thị sản phẩm */}
@@ -171,5 +162,5 @@ export default function MenuPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
