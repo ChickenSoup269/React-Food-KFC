@@ -5,6 +5,7 @@ import RecoveryPassword from '~/pages/recovery-pass'
 import SearchPage from '~/pages/search'
 import MenuPage from '~/pages/menu'
 import Cart from '~/pages/cart'
+import Admin from '~/pages/admin'
 
 const publicRoutes = [
   {
@@ -34,6 +35,10 @@ const publicRoutes = [
   {
     path: '/cart',
     component: Cart,
+  },
+  {
+    path: '/admin',
+    component: Admin,
   },
 ]
 

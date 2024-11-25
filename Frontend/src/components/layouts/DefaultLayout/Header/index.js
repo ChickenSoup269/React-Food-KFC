@@ -8,10 +8,10 @@ import styles from './header.scss'
 import routes from '~/routes/routes.js'
 import logoImage2 from '~/assets/images/logo2.png'
 import { useLanguage } from '~/components/Translate/LanguageContext'
+import { useCart } from '~/components/AddCard/CartContext'
 import ThemeLightDark from '~/components/Theme'
 import Translate from '~/components/Translate'
 import translations from '~/components/Translate/translations'
-import { useCart } from '~/components/AddCard/CartContext'
 
 const cx = clsx.bind(styles)
 

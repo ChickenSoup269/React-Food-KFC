@@ -51,7 +51,7 @@ function ModalAddProduct({ product, isModalOpen, closeModal }) {
       notifyWarning('Please select a size before adding to cart!')
       return
     } else {
-      notifySuccess('Product added to cart successfully!')
+      // notifySuccess('Product added to cart successfully!')
 
       const cartItem = {
         id: `${product.id}-${selectedSize}`, // Create a unique ID by combining product id and size

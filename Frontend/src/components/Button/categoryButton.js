@@ -15,7 +15,6 @@ export default function CategoryButton({ category, onClick, activeCategory }) {
 }
 
 // propTypes
-
 CategoryButton.propTypes = {
   category: PropTypes.string.isRequired,
   onClick: PropTypes.func,

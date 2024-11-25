@@ -23,7 +23,7 @@ export default function Cart() {
   const savings = calculateSavings()
   const shippingCost = 0 // Assuming flat shipping cost
 
-  // Calculate the total quantity of items in the cart
+  // Calculate the total quantity of items in the cart (tính tổng)
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0)
 
   const handleRemoveItem = (itemId) => {

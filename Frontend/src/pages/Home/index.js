@@ -40,7 +40,7 @@ export default function Home() {
 
   // Sample images for the slider
   const images = [
-    'https://foodology.ca/wp-content/uploads/2024/04/KFC_MarketTest-Slider-Fill-Up-Box-CC_V3-r01.png',
+    'https://img.gotit.vn/compress/brand/images/1672318321_1JZy0.png',
     'https://static.kfcvietnam.com.vn/images/web/our-story/lg/our-story.jpg?v=gORrX4',
     'https://static.kfcvietnam.com.vn/images/content/home/carousel/lg/ComboMaGe.webp?v=4B5EvL',
     'https://brand-uk.assets.kfc.co.uk/2024-09/W7_CAROUSEL_DELIVERYDEAL_2TWISTER_2FRIES_UK_2000x650px.jpg?VersionId=0mmPoRRt9ClJ377_i0DIORivQy.O7rPV',
