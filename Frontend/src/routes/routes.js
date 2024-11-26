@@ -9,6 +9,7 @@ const routes = {
   search: '/search',
   menuPage: '/menu',
   cart: '/cart',
+  productDetail: '/product/:id',
 }
 
 export default routes

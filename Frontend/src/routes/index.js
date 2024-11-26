@@ -6,6 +6,7 @@ import SearchPage from '~/pages/search'
 import MenuPage from '~/pages/menu'
 import Cart from '~/pages/cart'
 import Admin from '~/pages/admin'
+import ProductDetail from '~/pages/Detail'
 
 const publicRoutes = [
   {
@@ -35,6 +36,10 @@ const publicRoutes = [
   {
     path: '/cart',
     component: Cart,
+  },
+  {
+    path: '/product/:id',
+    component: ProductDetail,
   },
   {
     path: '/admin',

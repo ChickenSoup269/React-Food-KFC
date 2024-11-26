@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import styles from './products.scss'
+import { Link } from 'react-router-dom'
 
 import { ModalAddProduct } from '~/components/Modal'
 import { ButtonSecondary } from '~/components/Button'
@@ -44,7 +45,9 @@ export default function ProductCard({ product }) {
         </div>
 
         <div className="p-4">
-          <h2 className="product-card-name mb-2 text-base font-medium ">{product.name}</h2>
+          <h2 className="product-card-name mb-2 text-base font-medium ">
+            <Link to={`/product/${product.id}`}>{product.name}</Link>
+          </h2>
           <p className="product-card-description mb-2 text-base ">{product.description}</p>
           <div className="flex items-center justify-between">
             <div className="flex items-center">
