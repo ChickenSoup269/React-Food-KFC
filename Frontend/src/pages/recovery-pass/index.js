@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './recovery-pass.scss'
 import clsx from 'clsx'
-// import routes from '~/routes/routes'
+
+
 
 const cx = clsx.bind(styles)
 
