@@ -1,4 +1,4 @@
-import Home from '~/pages/home'
+import Home from '~/pages/Home'
 import Login from '~/pages/login'
 import Register from '~/pages/register'
 import RecoveryPassword from '~/pages/recovery-pass'
@@ -6,6 +6,7 @@ import SearchPage from '~/pages/search'
 import MenuPage from '~/pages/menu'
 import Cart from '~/pages/cart'
 import Admin from '~/pages/admin'
+import ProductDetail from '~/pages/Detail'
 
 const publicRoutes = [
   {
@@ -35,6 +36,10 @@ const publicRoutes = [
   {
     path: '/cart',
     component: Cart,
+  },
+  {
+    path: '/product/:id',
+    component: ProductDetail,
   },
   {
     path: '/admin',
