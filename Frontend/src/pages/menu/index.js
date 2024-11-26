@@ -13,7 +13,7 @@ export default function MenuPage() {
   const [filteredProducts, setFilteredProducts] = useState(products)
   const [activeCategory, setActiveCategory] = useState(null)
   const [sortOrder, setSortOrder] = useState('default')
-  const [, /* isDropdownOpen*/ setIsDropdownOpen] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [selectedSort, setSelectedSort] = useState('Sort by price') // Trạng thái cho tên đã chọn
 
   // Hàm xử lý khi thay đổi nội dung tìm kiếm
@@ -90,9 +90,9 @@ export default function MenuPage() {
   }
 
   // Hàm để toggle dropdown
-  // const toggleDropdown = () => {
-  //   setIsDropdownOpen((prev) => !prev)
-  // }
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev)
+  }
 
   return (
     <div className={cx('wrapper-menu-page')}>
