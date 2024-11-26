@@ -151,7 +151,12 @@ export default function MenuPage() {
         </div>
 
         <div className="flex justify-end">
-          <SoftByPrice selectedSort={selectedSort} onSortChange={handleSortChange} />
+          <SoftByPrice
+            selectedSort={selectedSort}
+            onSortChange={handleSortChange}
+            isDropdownOpen={isDropdownOpen}
+            toggleDropdown={toggleDropdown}
+          />
         </div>
 
         {/* Phần hiển thị sản phẩm */}
